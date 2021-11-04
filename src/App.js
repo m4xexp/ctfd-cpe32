@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-           pom mute pai gon2.
+           pom mute pai gon3.
         </p>
         <a
           className="App-link"
