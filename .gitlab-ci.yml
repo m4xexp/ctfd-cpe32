@@ -28,7 +28,7 @@ build_preview:
     - docker --version
   script:
     - docker build -t cicdtest .
-    - docker push registry:2
+    - docker push registry
 
 
 # analyze:
