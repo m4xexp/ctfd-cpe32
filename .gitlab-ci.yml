@@ -37,17 +37,17 @@ analyze:
   allow failure: true 
  
 
-build_preview:
-  stage: build
-  image: docker
-  services:
-    - docker:dind
-  only:
-    - preview
-  before script:
-    - docker --version
-  script:
-    - docker build -t 
+# build_preview:
+#   stage: build
+#   image: docker
+#   services:
+#     - docker:dind
+#   only:
+#     - preview
+#   before script:
+#     - docker --version
+#   script:
+#     - docker build -t 
     
 # sast:
 #   stage: test
