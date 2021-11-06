@@ -27,9 +27,9 @@ build_preview:
   before_script:
     - docker --version
   script:
-    - docker build -t $REGISTRY_SERVER/$REGISTRY_NAME:$MAJOR_VERSION.$MINOR_VERSION. .
+    - docker build -t reactcicd .
     - docker login --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD $REGISTRY_SERVER
-    - docker push $REGISTRY_SERVER/$REGISTRY_NAME:$MAJOR_VERSION.$MINOR_VERSION.
+    - docker push reactcicd
 
 
 # analyze:
