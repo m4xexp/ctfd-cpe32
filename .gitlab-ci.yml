@@ -33,30 +33,22 @@ build_preview:
     - docker push $REGISTRY_SERVER/$REGISTRY_NAME:$MAJOR_VERSION.$MINOR_VERSION
 
 
-stages:
-  - analyze
-analyze:sonar:
+analyze:
   stage: analyze
   image:
-    name: sonarsource/sonar-scanner-cli:4.5
+    name: sonarsource/sonar-scanner-cli:latest
     entrypoint: [""]
   variables:
-    # Defines the location of the analysis task cache
-    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
-    # Shallow cloning needs to be disabled.
-    # See https://docs.sonarqube.org/latest/analysis/gitlab-cicd/.
-    GIT_DEPTH: 0
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
   cache:
     key: "${CI_JOB_NAME}"
     paths:
       - .sonar/cache
-  only: 
-    - dev    
   script:
-    - sonar-scanner
-  rules:
-    # SonarQube CommunityEdition only supports analyzing a single branch.
-    # So only run on master.
-    - if: '$CI_COMMIT_BRANCH == "master"'
-      when: on_success
-    - when: never
+    - sonar-scanner -Dsonar.qualitygate.wait=true
+  allow_failure: true
+  only:
+    - merge_requests
+    - master # or the name of your main branch
+    - develop
