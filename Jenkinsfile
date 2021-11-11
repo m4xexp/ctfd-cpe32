@@ -25,7 +25,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                node('sonar') {
+                node {
                     script {
                         def scannerHome = tool 'SonarScanner4.4';
                         withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                node('docker') {
+                node {
                     script {
                         checkout scm
                         docker.withRegistry('https://registry.hub.docker.com/', 'dockerHub') {
