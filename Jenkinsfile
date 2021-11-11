@@ -54,7 +54,10 @@
 
 node {
   stage('SCM') {
-    git 'https://gitlab.com/prakasit.56/testting.git'
+    cleanWs()
+    git branch: 'main',
+    credentialsId: 'gitlabID',
+    url: 'https://gitlab.com/prakasit.56/testting.git'
   }
   stage('SonarQube analysis') {
     def scannerHome = tool 'SonarScanner4.4';
