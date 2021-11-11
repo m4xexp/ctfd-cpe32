@@ -60,7 +60,7 @@ node {
     url: 'https://gitlab.com/prakasit.56/testting.git'
   }
   stage('SonarQube analysis') {
-    def scannerHome = tool 'SonarScanner4.4';
+    def scannerHome = tool 'SonarScanner2.13.1';
     withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
       def sonarOptions = []
       sonarOptions.add("-Dsonar.projectKey=Test") // SET PROJECT KEY
