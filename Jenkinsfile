@@ -62,13 +62,8 @@ node {
   stage('SonarQube analysis') {
     steps {
         withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
-      def sonarOptions = []
-      sonarOptions.add("-Dsonar.projectKey=Test") // SET PROJECT KEY
-      sonarOptions.add("-Dsonar.projectName=SonarQube") // SET PROJECT NAME
-      sonarOptions.add("-Dsonar.host.url=http://localhost:9000")
-      sonarOptions.add("-Dsonar.login=181aeda18c0e770d0ec15290c6f8e53d379d7bcb")
       sonarOptions = sonarOptions.join(' ')
-      sh "${scannerHome}/bin/sonar-scanner  ${sonarOptions}"
+      sh "${scannerHome}/bin/sonar-scanner "
     }
   }
   }
