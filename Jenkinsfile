@@ -52,7 +52,7 @@
 //     }
 // }
 
-pipeline{
+node{
   stage('SCM') {
     cleanWs()
     git branch: 'main',
