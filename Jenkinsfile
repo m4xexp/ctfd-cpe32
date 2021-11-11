@@ -52,7 +52,7 @@
 //     }
 // }
 
-node {
+pipeline{
   stage('SCM') {
     cleanWs()
     git branch: 'main',
@@ -64,7 +64,7 @@ node {
         withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
       sonarOptions = sonarOptions.join(' ')
       sh "${scannerHome}/bin/sonar-scanner "
+            }
+        }
     }
-  }
-  }
 }
