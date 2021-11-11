@@ -61,9 +61,14 @@ node {
   }
   stage('SonarQube analysis') {
     def scannerHome = tool 'SonarScanner4.4';
-    withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name      
-      
-      sh "${scannerHome}/bin/sonar-scanner"
+    withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+      def sonarOptions = []
+      sonarOptions.add("-Dsonar.projectKey=reactapp") // SET PROJECT KEY
+      sonarOptions.add("-Dsonar.projectName=reactapp") // SET PROJECT NAME
+      sonarOptions.add("-Dsonar.host.url=localhost:9000")
+      sonarOptions.add("-Dsonar.login=cdd41b188b8a74fd684471ad4d488ee8ea814508")
+      sonarOptions = sonarOptions.join(' ')
+      sh "${scannerHome}/bin/sonar-scanner  ${sonarOptions}"
     }
   }
 }
