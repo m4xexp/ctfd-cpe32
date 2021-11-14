@@ -61,14 +61,14 @@ node {
   }
   
   stage('SonarQube analysis') {
-    def scannerHome = tool name : 'sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation' ;
+    def scannerHome = tool : 'sonar' ;
     withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
       
       // def sonarOptions = []
       // sonarOptions.add("-Dsonar.projectKey=Sonartest") // SET PROJECT KEY
       // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
       // sonarOptions = sonarOptions.join(' ')
-      // sh "${scannerHome}/bin/sonar-scanner"
+      sh "/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner\"
 
     }
   } 
