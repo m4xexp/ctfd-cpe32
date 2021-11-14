@@ -61,7 +61,7 @@ node {
   }
   
   stage('SonarQube analysis') {
-    def scannerHome = tool name : 'Sonar' , type : 'hudson.plugins.sona'
+    def scannerHome = tool name : 'Sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation'
     withSonarQubeEnv('Sonar') { // If you have configured more than one global server connection, you can specify its name
       
       // def sonarOptions = []
