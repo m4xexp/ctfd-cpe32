@@ -68,7 +68,7 @@ node {
       // sonarOptions.add("-Dsonar.projectKey=Sonartest") // SET PROJECT KEY
       // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
       // sonarOptions = sonarOptions.join(' ')
-      sh "${scannerHome}/bin/sonar-scanner"
+      // sh "${scannerHome}/bin/sonar-scanner"
 
     }
   } 
