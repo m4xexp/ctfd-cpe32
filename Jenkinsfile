@@ -66,8 +66,7 @@ node {
        
       def sonarOptions = []
       // sonarOptions.add("-Dsonar.projectKey=sonartest") // SET PROJECT KEY
-      // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
-      sonarOptions.add("-Dsonar.host.url=localhost:9000")
+      // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME      
       sonarOptions = sonarOptions.join(' ')
       sh "${sonarOptions}"
 
