@@ -65,7 +65,7 @@ node {
     withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
        
       def sonarOptions = []
-      sonarOptions.add("-Dsonar.projectKey=sonartest") // SET PROJECT KEY
+      // sonarOptions.add("-Dsonar.projectKey=sonartest") // SET PROJECT KEY
       sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
       sonarOptions = sonarOptions.join(' ')
       sh "${sonarOptions}"
