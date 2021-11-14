@@ -56,11 +56,11 @@ node {
   stage('SCM') {
     cleanWs()
     git branch: 'main',
-    credentialsId: 'gitlabID',
+    // credentialsId: 'gitlabID',
     url: 'https://gitlab.com/prakasit.56/testting.git'
   }
   stage('SonarQube analysis') {
-    def scannerHome = tool 'SonarQube Scanner';
+    def scannerHome = tool 'SonarScanner4.4';
     withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
       def sonarOptions = []
       sonarOptions.add("-Dsonar.projectKey=SonarQube") // SET PROJECT KEY
