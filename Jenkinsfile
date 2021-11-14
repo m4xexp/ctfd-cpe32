@@ -56,20 +56,18 @@ node {
   stage('SCM') {
     cleanWs()
     git branch: 'main',
-    // credentialsId: 'gitlabID',
+    credentialsId: 'gitlabID',
     url: 'https://gitlab.com/prakasit.56/testting.git'
   }
   stage('SonarQube analysis') {
-    def scannerHome = tool 'SonarScanner4.4';
+    def scannerHome = tool 'Sonar';
     withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
-      def sonarOptions = []
-      sonarOptions.add("-Dsonar.projectKey=SonarQube") // SET PROJECT KEY
-      sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
-      sonarOptions.add("-Dsonar.host.url=localhost:9000")
-      sonarOptions.add("-Dsonar.login=admin")
-      sonarOptions.add("-Dsonar.password=36251498756")
-      sonarOptions = sonarOptions.join(' ')
-      sh "${scannerHome}/bin/sonar-scanner  ${sonarOptions}"
+      sh "${scannerHome}/bin/sonar-scanner  ${sonarOptions} \
+      -D sonar.login=admin \
+      -D sonar.password=36251498756 \
+      -D sonar.projectKey=Sonartest \
+      -D sonar.host.url=http://localhost:9000/"
+      
     }
   }
 }
