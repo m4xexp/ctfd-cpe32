@@ -61,16 +61,16 @@ node {
   }
   
   stage('SonarQube analysis') {
-    def scannerHome = tool name : 'sonar_scanner' , type : 'hudson.plugins.sonar.SonarRunnerInstallation'
-    withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
+//     def scannerHome = tool name : 'sonar_scanner' , type : 'hudson.plugins.sonar.SonarRunnerInstallation'
+//     withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
       
-      // def sonarOptions = []
-      // sonarOptions.add("-Dsonar.projectKey=Sonartest") // SET PROJECT KEY
-      // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
-      // sonarOptions = sonarOptions.join(' ')
-      sh "${scannerHome}/bin/sonar-scanner"
+//       // def sonarOptions = []
+//       // sonarOptions.add("-Dsonar.projectKey=Sonartest") // SET PROJECT KEY
+//       // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
+//       // sonarOptions = sonarOptions.join(' ')
+//       sh "${scannerHome}/bin/sonar-scanner"
 
-    }
-  } 
-}
+//     }
+//   } 
+// }
   
