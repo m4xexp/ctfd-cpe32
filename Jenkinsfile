@@ -61,12 +61,15 @@ node {
   }
   stage('SonarQube analysis') {
     def scannerHome = tool 'SonarScanner4.4';
-    withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
-      sh "${scannerHome}/bin/sonar-scanner
-      -D sonar.login=admin
-      -D sonar.password=36251498756
-      -D sonar.projectkey=SonarQube
-      -D sonar.host.url=http://localhost:9000"
+    withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+      def sonarOptions = []
+      sonarOptions.add("-Dsonar.projectKey=SonarQube") // SET PROJECT KEY
+      sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
+      sonarOptions.add("-Dsonar.host.url=localhost:9000")
+      sonarOptions.add("-Dsonar.login=admin")
+      sonarOptions.add("-Dsonar.password=36251498756")
+      sonarOptions = sonarOptions.join(' ')
+      sh "${scannerHome}/bin/sonar-scanner  ${sonarOptions}"
     }
   }
 }
