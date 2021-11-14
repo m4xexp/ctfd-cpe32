@@ -63,10 +63,10 @@ node {
     def scannerHome = tool 'Sonar';
     withSonarQubeEnv('Sonar') { // If you have configured more than one global server connection, you can specify its name
       sh "${scannerHome}/bin/sonar-scanner  \
-      -D sonar.login=admin \
-      -D sonar.password=36251498756 \
-      -D sonar.projectKey=Sonartest \
-      -D sonar.host.url=http://localhost:9000/"
+      // -D sonar.login=admin \
+      // -D sonar.password=36251498756 \
+      // -D sonar.projectKey=Sonartest \
+      // -D sonar.host.url=http://localhost:9000/"
       
       
     }
