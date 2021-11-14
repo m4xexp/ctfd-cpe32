@@ -62,16 +62,11 @@ node {
   stage('SonarQube analysis') {
     def scannerHome = tool 'Sonar';
     withSonarQubeEnv('SonarQube') { // If you have configured more than one global server connection, you can specify its name
-      sonar-scanner \
-        -Dsonar.projectKey=Sonartest \
-        -Dsonar.sources=. \
-        -Dsonar.host.url=http://localhost:9000 \
-        -Dsonar.login=cd826e330b2e437657743fcb084067adca979fe5
-      // sh "${scannerHome}/bin/sonar-scanner  ${sonarOptions} \
-      // -D sonar.login=admin \
-      // -D sonar.password=36251498756 \
-      // -D sonar.projectKey=Sonartest \
-      // -D sonar.host.url=http://localhost:9000/"
+      sh "${scannerHome}/bin/sonar-scanner  ${sonarOptions} \        
+      -Dsonar.projectKey=Sonartest \
+      -Dsonar.sources=. \
+      -Dsonar.host.url=http://localhost:9000 \
+      -Dsonar.login=cd826e330b2e437657743fcb084067adca979fe5"
       
     }
   }
