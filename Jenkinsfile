@@ -61,13 +61,14 @@ node {
   }
   
   stage('SonarQube analysis') {
-    def scannerHome = tool 'Sonar';
+    def scannerHome = tool name : 'Sonar' , type : 'hudson.plugins.sona'
     withSonarQubeEnv('Sonar') { // If you have configured more than one global server connection, you can specify its name
-      def sonarOptions = []
-      sonarOptions.add("-Dsonar.projectKey=Sonartest") // SET PROJECT KEY
-      sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
-      sonarOptions = sonarOptions.join(' ')
-      sh "${scannerHome}/bin/sonar-scanner  ${sonarOptions}"
+      
+      // def sonarOptions = []
+      // sonarOptions.add("-Dsonar.projectKey=Sonartest") // SET PROJECT KEY
+      // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
+      // sonarOptions = sonarOptions.join(' ')
+      sh "${scannerHome}/bin/sonar-scanner"
 
     }
   } 
