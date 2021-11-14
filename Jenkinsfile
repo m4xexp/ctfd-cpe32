@@ -75,12 +75,17 @@
 // }
   
 
-node{
-    
+pipeline{
+    agent any
+    environment {
+        PATH = "$PATH:/opt/apache-maven-3.8.2/bin"
+    }
     stages{
        stage('GetCode'){
             steps{
-                git 'https://gitlab.com/prakasit.56/testting.git'
+                git branch: 'main',
+                credentialsId: 'gitlabID',
+                url: 'https://gitlab.com/prakasit.56/testting.git'
             }
          }        
        stage('Build'){
