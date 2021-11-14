@@ -52,57 +52,57 @@
 //     }
 // }
 
-// node {
-//   stage('SCM') {
-//     // cleanWs()
-//     git branch: 'main',
-//     credentialsId: 'gitlabID',
-//     url: 'https://gitlab.com/prakasit.56/testting.git'
-//   }
+node {
+  stage('SCM') {
+    // cleanWs()
+    git branch: 'main',
+    credentialsId: 'gitlabID',
+    url: 'https://gitlab.com/prakasit.56/testting.git'
+  }
   
-//   stage('SonarQube analysis') {
-//     def scannerHome = tool name : 'sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation' ;
-//     withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
+  stage('SonarQube analysis') {
+    // def scannerHome = tool name : 'sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation' ;
+    withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
       
-//       // def sonarOptions = []
-//       // sonarOptions.add("-Dsonar.projectKey=Sonartest") // SET PROJECT KEY
-//       // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
-//       // sonarOptions = sonarOptions.join(' ')
-//       sh "${scannerHome}/bin/sonar-scanner"
+      // def sonarOptions = []
+      // sonarOptions.add("-Dsonar.projectKey=Sonartest") // SET PROJECT KEY
+      // sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME
+      // sonarOptions = sonarOptions.join(' ')
+      sh "${scannerHome}/bin/sonar-scanner"
 
-//     }
-//   } 
-// }
+    }
+  } 
+}
   
 
-pipeline{
-    agent any
-    environment {
-        PATH = "$PATH:/usr/share/maven/bin"
-    }
-    stages{
-       stage('GetCode'){
-            steps{
-                git branch: 'main',
-                credentialsId: 'gitlabID',
-                url: 'https://gitlab.com/prakasit.56/testting.git'
-            }
-         }        
-       stage('Build'){
-            steps{
-                sh 'mvn clean package'
-            }
-         }
-        stage('SonarQube analysis') {
-//    def scannerHome = tool 'SonarScanner 4.0';
-        steps{
-        withSonarQubeEnv('sonar') { 
-        // If you have configured more than one global server connection, you can specify its name
-//      sh "${scannerHome}/bin/sonar-scanner"
-        sh "mvn sonar:sonar"
-    }
-        }
-        }
+// pipeline{
+//     agent any
+//     environment {
+//         PATH = "$PATH:/usr/share/maven/bin"
+//     }
+//     stages{
+//        stage('GetCode'){
+//             steps{
+//                 git branch: 'main',
+//                 credentialsId: 'gitlabID',
+//                 url: 'https://gitlab.com/prakasit.56/testting.git'
+//             }
+//          }        
+//        stage('Build'){
+//             steps{
+//                 sh 'mvn clean package'
+//             }
+//          }
+//         stage('SonarQube analysis') {
+// //    def scannerHome = tool 'SonarScanner 4.0';
+//         steps{
+//         withSonarQubeEnv('sonar') { 
+//         // If you have configured more than one global server connection, you can specify its name
+// //      sh "${scannerHome}/bin/sonar-scanner"
+//         sh "mvn sonar:sonar"
+//     }
+//         }
+//         }
        
-    }
-}
+//     }
+// }
