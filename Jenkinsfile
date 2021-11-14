@@ -60,14 +60,15 @@ node {
     url: 'https://gitlab.com/prakasit.56/testting.git'
   }
   stage('SonarQube analysis') {
-    def scannerHome = tool 'Sonar';
-    withSonarQubeEnv('Sonar') { // If you have configured more than one global server connection, you can specify its name
-      sh "${scannerHome}/bin/sonar-scanner  \
-      -D sonar.login=admin \
-      -D sonar.password=36251498756 \
-      -D sonar.projectKey=Sonartest \
-      -D sonar.host.url=http://localhost:9000/"
+    steps {
+      def scannerHome = tool 'Sonar';
+      withSonarQubeEnv('Sonar') { // If you have configured more than one global server connection, you can specify its name
+        sh "${scannerHome}/bin/sonar-scanner  \
+        -D sonar.login=admin \
+        -D sonar.password=36251498756 \
+        -D sonar.projectKey=Sonartest \
+        -D sonar.host.url=http://localhost:9000/"
       }
     } 
-}
-  
+  }
+}  
