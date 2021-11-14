@@ -54,7 +54,7 @@
 
 node {
   stage('SCM') {
-    cleanWs()
+    // cleanWs()
     git branch: 'main',
     credentialsId: 'gitlabID',
     url: 'https://gitlab.com/prakasit.56/testting.git'
