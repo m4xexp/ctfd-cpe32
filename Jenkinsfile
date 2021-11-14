@@ -65,7 +65,7 @@ node {
       sh "${scannerHome}/bin/sonar-scanner
       -D sonar.login=admin
       -D sonar.password=36251498756
-      -D sonar.projectkey=SonarQubeg
+      -D sonar.projectkey=SonarQube
       -D sonar.host.url=http://localhost:9000"
     }
   }
