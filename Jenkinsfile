@@ -64,7 +64,7 @@ node {
     steps{
     // def scannerHome = tool name : 'sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation' ;
     withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
-      sh "" 
+      // sh "" 
       // def sonarOptions = []
       //  sonarOptions.add("-Dsonar.projectKey=sonartest") // SET PROJECT KEY
       //  sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME      
