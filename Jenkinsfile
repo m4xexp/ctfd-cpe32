@@ -61,8 +61,9 @@ node {
   }
   
   stage('SonarQube analysis') {
-    // def scannerHome = tool name : 'sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation' ;
+    def scannerHome = tool name : 'sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation' ;
     withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
+      sh "${scannerHome}/bin/sonar-scanner"
        
       // def sonarOptions = []
       //  sonarOptions.add("-Dsonar.projectKey=sonartest") // SET PROJECT KEY
