@@ -72,7 +72,7 @@ node {
       // sh "${sonarOptions}"
 
     }
-  } 
+  
 }
   
 
