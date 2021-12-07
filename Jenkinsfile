@@ -60,7 +60,7 @@ node {
     url: 'https://gitlab.com/prakasit.56/testting.git'
   }
   
-  stage('SonarQube analysis') {
+  stage('SonarQ analysis') {
     // def scannerHome = tool name : 'sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation' ;
     withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
       // sh "${scannerHome}/bin/sonar-scanner"
