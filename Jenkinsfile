@@ -65,6 +65,11 @@ node {
     // def scannerHome = tool name : 'sonar' , type : 'hudson.plugins.sonar.SonarRunnerInstallation' ;
     withSonarQubeEnv('sonar') { // If you have configured more than one global server connection, you can specify its name
       // sh "${scannerHome}/bin/sonar-scanner"
+      sonar-scanner \
+      -Dsonar.projectKey=sonartest \
+      -Dsonar.sources=. \
+      -Dsonar.host.url=http://localhost:9000 \
+      -Dsonar.login=8c6a4eb062806f9f39ac3ea2020dc4334d326c6e
        
       // def sonarOptions = []
       //  sonarOptions.add("-Dsonar.projectKey=sonartest") // SET PROJECT KEY
