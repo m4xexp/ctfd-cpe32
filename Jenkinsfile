@@ -72,7 +72,7 @@ node {
       //  sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME      
       // sonarOptions = sonarOptions.join(' ')
       sh """
-        opt/sonarqube/bin
+        opt/sonarqube
         -Dsonar.projectKey= '8c6a4eb062806f9f39ac3ea2020dc4334d326c6e'
         -Dsonar.sources=. 
 """
