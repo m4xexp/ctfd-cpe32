@@ -71,7 +71,7 @@ node {
       //  sonarOptions.add("-Dsonar.projectKey=sonartest") // SET PROJECT KEY
       //  sonarOptions.add("-Dsonar.projectName=react-testing-cicd") // SET PROJECT NAME      
       // sonarOptions = sonarOptions.join(' ')
-      sh "/opt/sonarqube"
+      sh "/Downloads/Sonar/sonarqube-9.2.1.49989"
 
     }
   } 
