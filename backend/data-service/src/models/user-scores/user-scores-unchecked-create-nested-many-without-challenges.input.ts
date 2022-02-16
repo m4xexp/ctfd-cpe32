@@ -1,22 +1,23 @@
-import { Field } from '@nestjs/graphql';
-import { InputType } from '@nestjs/graphql';
-import { UserScoresCreateWithoutChallengesInput } from './user-scores-create-without-challenges.input';
-import { UserScoresCreateOrConnectWithoutChallengesInput } from './user-scores-create-or-connect-without-challenges.input';
-import { UserScoresCreateManyChallengesInputEnvelope } from './user-scores-create-many-challenges-input-envelope.input';
-import { UserScoresWhereUniqueInput } from './user-scores-where-unique.input';
+import { Field } from '@nestjs/graphql'
+import { InputType } from '@nestjs/graphql'
+import { UserScoresCreateWithoutChallengesInput } from './user-scores-create-without-challenges.input'
+import { UserScoresCreateOrConnectWithoutChallengesInput } from './user-scores-create-or-connect-without-challenges.input'
+import { UserScoresCreateManyChallengesInputEnvelope } from './user-scores-create-many-challenges-input-envelope.input'
+import { UserScoresWhereUniqueInput } from './user-scores-where-unique.input'
 
 @InputType()
 export class UserScoresUncheckedCreateNestedManyWithoutChallengesInput {
+  @Field(() => [UserScoresCreateWithoutChallengesInput], { nullable: true })
+  create?: Array<UserScoresCreateWithoutChallengesInput>
 
-    @Field(() => [UserScoresCreateWithoutChallengesInput], {nullable:true})
-    create?: Array<UserScoresCreateWithoutChallengesInput>;
+  @Field(() => [UserScoresCreateOrConnectWithoutChallengesInput], {
+    nullable: true,
+  })
+  connectOrCreate?: Array<UserScoresCreateOrConnectWithoutChallengesInput>
 
-    @Field(() => [UserScoresCreateOrConnectWithoutChallengesInput], {nullable:true})
-    connectOrCreate?: Array<UserScoresCreateOrConnectWithoutChallengesInput>;
+  @Field(() => UserScoresCreateManyChallengesInputEnvelope, { nullable: true })
+  createMany?: UserScoresCreateManyChallengesInputEnvelope
 
-    @Field(() => UserScoresCreateManyChallengesInputEnvelope, {nullable:true})
-    createMany?: UserScoresCreateManyChallengesInputEnvelope;
-
-    @Field(() => [UserScoresWhereUniqueInput], {nullable:true})
-    connect?: Array<UserScoresWhereUniqueInput>;
+  @Field(() => [UserScoresWhereUniqueInput], { nullable: true })
+  connect?: Array<UserScoresWhereUniqueInput>
 }

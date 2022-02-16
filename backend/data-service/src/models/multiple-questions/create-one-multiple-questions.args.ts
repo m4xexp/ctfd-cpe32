@@ -1,10 +1,9 @@
-import { Field } from '@nestjs/graphql';
-import { ArgsType } from '@nestjs/graphql';
-import { MultipleQuestionsCreateInput } from './multiple-questions-create.input';
+import { Field } from '@nestjs/graphql'
+import { ArgsType } from '@nestjs/graphql'
+import { MultipleQuestionsCreateInput } from './multiple-questions-create.input'
 
 @ArgsType()
 export class CreateOneMultipleQuestionsArgs {
-
-    @Field(() => MultipleQuestionsCreateInput, {nullable:false})
-    data!: MultipleQuestionsCreateInput;
+  @Field(() => MultipleQuestionsCreateInput, { nullable: false })
+  data!: MultipleQuestionsCreateInput
 }

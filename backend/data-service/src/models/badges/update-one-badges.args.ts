@@ -1,14 +1,13 @@
-import { Field } from '@nestjs/graphql';
-import { ArgsType } from '@nestjs/graphql';
-import { BadgesUpdateInput } from './badges-update.input';
-import { BadgesWhereUniqueInput } from './badges-where-unique.input';
+import { Field } from '@nestjs/graphql'
+import { ArgsType } from '@nestjs/graphql'
+import { BadgesUpdateInput } from './badges-update.input'
+import { BadgesWhereUniqueInput } from './badges-where-unique.input'
 
 @ArgsType()
 export class UpdateOneBadgesArgs {
+  @Field(() => BadgesUpdateInput, { nullable: false })
+  data!: BadgesUpdateInput
 
-    @Field(() => BadgesUpdateInput, {nullable:false})
-    data!: BadgesUpdateInput;
-
-    @Field(() => BadgesWhereUniqueInput, {nullable:false})
-    where!: BadgesWhereUniqueInput;
+  @Field(() => BadgesWhereUniqueInput, { nullable: false })
+  where!: BadgesWhereUniqueInput
 }
