@@ -81,7 +81,7 @@ When you first install software, you need to create table and initlize data in d
 For mirgrate database script
 1. Create Migrate and seed Database
 ```
-yarn prisma db push --force-reset --accept-data-loss --schema=./src/database/prisma/schema.prisma && yarn prisma db seed
+yarn prisma db push --force-reset --accept-data-loss --schema=./src/providers/databases/prisma/schema.prisma && yarn prisma db seed
 ```
 
 

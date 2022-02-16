@@ -2,10 +2,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator nestgraphql {
-  provider = "node node_modules/prisma-nestjs-graphql"
-  output = "../../models"
-}
+//generator nestgraphql {
+//  provider = "node node_modules/prisma-nestjs-graphql"
+//  output = "../../models"
+//}
 
 datasource db {
   provider = "postgresql"

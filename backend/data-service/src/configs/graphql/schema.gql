@@ -1,0 +1,3566 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserLoggings {
+  log_id: ID!
+  users: Users!
+  user_id: String!
+  action: String!
+  ip: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Events {
+  event_id: ID!
+  name: String!
+  evnet_description: String!
+  badges: Badges!
+  award_badge: String!
+  flag_link: String!
+  description: String!
+  question: String!
+  answer: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TypesCount {
+  userScores: Int!
+  challenges: Int!
+}
+
+type Types {
+  types_id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userScores: [UserScores!]
+  challenges: [Challenges!]
+  _count: TypesCount!
+}
+
+type CategoriesCount {
+  userScores: Int!
+  challenges: Int!
+}
+
+type Categories {
+  categories_id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userScores: [UserScores!]
+  challenges: [Challenges!]
+  _count: CategoriesCount!
+}
+
+type UserScores {
+  users: Users!
+  user_id: String!
+  challenges: Challenges!
+  challenge_id: String!
+  base_score: Int!
+  time_score: Float!
+  levels: Levels!
+  level_id: String!
+  types: Types!
+  types_id: String!
+  categories: Categories!
+  categories_id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type LevelsCount {
+  userScores: Int!
+  challenges: Int!
+}
+
+type Levels {
+  level_id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userScores: [UserScores!]
+  challenges: [Challenges!]
+  _count: LevelsCount!
+}
+
+type MultipleChoiceQuestion {
+  multiple_choice_question_id: ID!
+  multipleQuestions: MultipleQuestions!
+  multiple_question_id: String!
+  answer: String!
+  correct_flag: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type MultipleQuestionsCount {
+  multipleChoiceQuestion: Int!
+}
+
+type MultipleQuestions {
+  multiple_question_id: ID!
+  challenges: Challenges!
+  challenge_id: String!
+  question: String!
+  hint: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  multipleChoiceQuestion: [MultipleChoiceQuestion!]
+  _count: MultipleQuestionsCount!
+}
+
+type ShortAnswerQuestions {
+  short_answer_question_id: ID!
+  challenges: Challenges!
+  challenge_id: String!
+  question: String!
+  hint: String!
+  answer: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type FlagQuestions {
+  flag_question_id: ID!
+  challenges: Challenges!
+  challenge_id: String!
+  video_link: String!
+  description: String!
+  question: String!
+  answer: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ChallengesCount {
+  userScores: Int!
+  multipleQuestions: Int!
+  shortAnswerQuestions: Int!
+  flagQuestions: Int!
+}
+
+type Challenges {
+  challenge_id: ID!
+  name: String!
+  question: String!
+  description: String!
+  levels: Levels!
+  level_id: String!
+  types: Types!
+  types_id: String!
+  categories: Categories!
+  categories_id: String!
+  badges: Badges!
+  award_badge: String!
+  scorce: Int!
+  max_time: Int!
+  max_cost: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userScores: [UserScores!]
+  multipleQuestions: [MultipleQuestions!]
+  shortAnswerQuestions: [ShortAnswerQuestions!]
+  flagQuestions: [FlagQuestions!]
+  _count: ChallengesCount!
+}
+
+type BadgesCount {
+  userBadges: Int!
+  events: Int!
+  challenges: Int!
+}
+
+type Badges {
+  badge_id: ID!
+  condition: String!
+  name: String!
+  link: String!
+  description: String!
+  status: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userBadges: [UserBadges!]
+  events: [Events!]
+  challenges: [Challenges!]
+  _count: BadgesCount!
+}
+
+type UserBadges {
+  users: Users!
+  user_id: String!
+  badges: Badges!
+  badge_id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TeamsCount {
+  teamMembers: Int!
+}
+
+type Teams {
+  team_id: ID!
+  team_profile_pic: String
+  name: String!
+  conuntry_code: String!
+  banned: Boolean!
+  github_link: String!
+  twitter_link: String!
+  facebook_link: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  teamMembers: [TeamMembers!]
+  _count: TeamsCount!
+}
+
+type TeamMembers {
+  users: Users!
+  user_id: ID!
+  teams: Teams!
+  team_id: String!
+  type: String!
+  status: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type TutorialContentsCount {
+  tutorialChapterDatas: Int!
+}
+
+type TutorialContents {
+  tutorial_id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  tutorialChapterDatas: [TutorialChapterDatas!]
+  _count: TutorialContentsCount!
+}
+
+type TutorialChapterDatasCount {
+  userTutorials: Int!
+}
+
+type TutorialChapterDatas {
+  chapter_id: ID!
+  tutorialContents: TutorialContents!
+  tutorial_id: String!
+  chapter_name: String!
+  video_link: String!
+  flag_link: String!
+  description: String!
+  question: String!
+  answer: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userTutorials: [UserTutorials!]
+  _count: TutorialChapterDatasCount!
+}
+
+type UserTutorials {
+  users: Users!
+  user_id: String!
+  tutorialChapterDatas: TutorialChapterDatas!
+  chapter_id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UsersCount {
+  userLoggings: Int!
+  userBadges: Int!
+  teamMembers: Int!
+  userTutorials: Int!
+  userScores: Int!
+}
+
+type Users {
+  user_id: ID!
+  user_invite_id: Int!
+  profile_pic: String
+  total_score: Float!
+  type: String!
+  name: String!
+  password: String!
+  email: String!
+  conuntry_code: String!
+  banned: Boolean!
+  verified: Boolean!
+  quick_start_status: Boolean!
+  profile_description: String!
+  github_link: String!
+  twitter_link: String!
+  facebook_link: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  userLoggings: [UserLoggings!]
+  userBadges: [UserBadges!]
+  teamMembers: [TeamMembers!]
+  userTutorials: [UserTutorials!]
+  userScores: [UserScores!]
+  _count: UsersCount!
+}
+
+type Query {
+  getUsers(where: UsersWhereInput, orderBy: [UsersOrderByWithRelationInput!], cursor: UsersWhereUniqueInput, take: Int, skip: Int, distinct: [UsersScalarFieldEnum!]): [Users!]
+}
+
+input UsersWhereInput {
+  AND: [UsersWhereInput!]
+  OR: [UsersWhereInput!]
+  NOT: [UsersWhereInput!]
+  user_id: StringFilter
+  user_invite_id: IntFilter
+  profile_pic: StringNullableFilter
+  total_score: FloatFilter
+  type: StringFilter
+  name: StringFilter
+  password: StringFilter
+  email: StringFilter
+  conuntry_code: StringFilter
+  banned: BoolFilter
+  verified: BoolFilter
+  quick_start_status: BoolFilter
+  profile_description: StringFilter
+  github_link: StringFilter
+  twitter_link: StringFilter
+  facebook_link: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userLoggings: UserLoggingsListRelationFilter
+  userBadges: UserBadgesListRelationFilter
+  teamMembers: TeamMembersListRelationFilter
+  userTutorials: UserTutorialsListRelationFilter
+  userScores: UserScoresListRelationFilter
+}
+
+input StringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringFilter
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+input NestedStringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input FloatFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatFilter
+}
+
+input NestedFloatFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatFilter
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: NestedDateTimeFilter
+}
+
+input UserLoggingsListRelationFilter {
+  every: UserLoggingsWhereInput
+  some: UserLoggingsWhereInput
+  none: UserLoggingsWhereInput
+}
+
+input UserLoggingsWhereInput {
+  AND: [UserLoggingsWhereInput!]
+  OR: [UserLoggingsWhereInput!]
+  NOT: [UserLoggingsWhereInput!]
+  log_id: StringFilter
+  users: UsersRelationFilter
+  user_id: StringFilter
+  action: StringFilter
+  ip: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input UsersRelationFilter {
+  is: UsersWhereInput
+  isNot: UsersWhereInput
+}
+
+input UserBadgesListRelationFilter {
+  every: UserBadgesWhereInput
+  some: UserBadgesWhereInput
+  none: UserBadgesWhereInput
+}
+
+input UserBadgesWhereInput {
+  AND: [UserBadgesWhereInput!]
+  OR: [UserBadgesWhereInput!]
+  NOT: [UserBadgesWhereInput!]
+  users: UsersRelationFilter
+  user_id: StringFilter
+  badges: BadgesRelationFilter
+  badge_id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input BadgesRelationFilter {
+  is: BadgesWhereInput
+  isNot: BadgesWhereInput
+}
+
+input BadgesWhereInput {
+  AND: [BadgesWhereInput!]
+  OR: [BadgesWhereInput!]
+  NOT: [BadgesWhereInput!]
+  badge_id: StringFilter
+  condition: StringFilter
+  name: StringFilter
+  link: StringFilter
+  description: StringFilter
+  status: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userBadges: UserBadgesListRelationFilter
+  events: EventsListRelationFilter
+  challenges: ChallengesListRelationFilter
+}
+
+input EventsListRelationFilter {
+  every: EventsWhereInput
+  some: EventsWhereInput
+  none: EventsWhereInput
+}
+
+input EventsWhereInput {
+  AND: [EventsWhereInput!]
+  OR: [EventsWhereInput!]
+  NOT: [EventsWhereInput!]
+  event_id: StringFilter
+  name: StringFilter
+  evnet_description: StringFilter
+  badges: BadgesRelationFilter
+  award_badge: StringFilter
+  flag_link: StringFilter
+  description: StringFilter
+  question: StringFilter
+  answer: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input ChallengesListRelationFilter {
+  every: ChallengesWhereInput
+  some: ChallengesWhereInput
+  none: ChallengesWhereInput
+}
+
+input ChallengesWhereInput {
+  AND: [ChallengesWhereInput!]
+  OR: [ChallengesWhereInput!]
+  NOT: [ChallengesWhereInput!]
+  challenge_id: StringFilter
+  name: StringFilter
+  question: StringFilter
+  description: StringFilter
+  levels: LevelsRelationFilter
+  level_id: StringFilter
+  types: TypesRelationFilter
+  types_id: StringFilter
+  categories: CategoriesRelationFilter
+  categories_id: StringFilter
+  badges: BadgesRelationFilter
+  award_badge: StringFilter
+  scorce: IntFilter
+  max_time: IntFilter
+  max_cost: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userScores: UserScoresListRelationFilter
+  multipleQuestions: MultipleQuestionsListRelationFilter
+  shortAnswerQuestions: ShortAnswerQuestionsListRelationFilter
+  flagQuestions: FlagQuestionsListRelationFilter
+}
+
+input LevelsRelationFilter {
+  is: LevelsWhereInput
+  isNot: LevelsWhereInput
+}
+
+input LevelsWhereInput {
+  AND: [LevelsWhereInput!]
+  OR: [LevelsWhereInput!]
+  NOT: [LevelsWhereInput!]
+  level_id: StringFilter
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userScores: UserScoresListRelationFilter
+  challenges: ChallengesListRelationFilter
+}
+
+input UserScoresListRelationFilter {
+  every: UserScoresWhereInput
+  some: UserScoresWhereInput
+  none: UserScoresWhereInput
+}
+
+input UserScoresWhereInput {
+  AND: [UserScoresWhereInput!]
+  OR: [UserScoresWhereInput!]
+  NOT: [UserScoresWhereInput!]
+  users: UsersRelationFilter
+  user_id: StringFilter
+  challenges: ChallengesRelationFilter
+  challenge_id: StringFilter
+  base_score: IntFilter
+  time_score: FloatFilter
+  levels: LevelsRelationFilter
+  level_id: StringFilter
+  types: TypesRelationFilter
+  types_id: StringFilter
+  categories: CategoriesRelationFilter
+  categories_id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input ChallengesRelationFilter {
+  is: ChallengesWhereInput
+  isNot: ChallengesWhereInput
+}
+
+input TypesRelationFilter {
+  is: TypesWhereInput
+  isNot: TypesWhereInput
+}
+
+input TypesWhereInput {
+  AND: [TypesWhereInput!]
+  OR: [TypesWhereInput!]
+  NOT: [TypesWhereInput!]
+  types_id: StringFilter
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userScores: UserScoresListRelationFilter
+  challenges: ChallengesListRelationFilter
+}
+
+input CategoriesRelationFilter {
+  is: CategoriesWhereInput
+  isNot: CategoriesWhereInput
+}
+
+input CategoriesWhereInput {
+  AND: [CategoriesWhereInput!]
+  OR: [CategoriesWhereInput!]
+  NOT: [CategoriesWhereInput!]
+  categories_id: StringFilter
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userScores: UserScoresListRelationFilter
+  challenges: ChallengesListRelationFilter
+}
+
+input MultipleQuestionsListRelationFilter {
+  every: MultipleQuestionsWhereInput
+  some: MultipleQuestionsWhereInput
+  none: MultipleQuestionsWhereInput
+}
+
+input MultipleQuestionsWhereInput {
+  AND: [MultipleQuestionsWhereInput!]
+  OR: [MultipleQuestionsWhereInput!]
+  NOT: [MultipleQuestionsWhereInput!]
+  multiple_question_id: StringFilter
+  challenges: ChallengesRelationFilter
+  challenge_id: StringFilter
+  question: StringFilter
+  hint: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  multipleChoiceQuestion: MultipleChoiceQuestionListRelationFilter
+}
+
+input MultipleChoiceQuestionListRelationFilter {
+  every: MultipleChoiceQuestionWhereInput
+  some: MultipleChoiceQuestionWhereInput
+  none: MultipleChoiceQuestionWhereInput
+}
+
+input MultipleChoiceQuestionWhereInput {
+  AND: [MultipleChoiceQuestionWhereInput!]
+  OR: [MultipleChoiceQuestionWhereInput!]
+  NOT: [MultipleChoiceQuestionWhereInput!]
+  multiple_choice_question_id: StringFilter
+  multipleQuestions: MultipleQuestionsRelationFilter
+  multiple_question_id: StringFilter
+  answer: StringFilter
+  correct_flag: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input MultipleQuestionsRelationFilter {
+  is: MultipleQuestionsWhereInput
+  isNot: MultipleQuestionsWhereInput
+}
+
+input ShortAnswerQuestionsListRelationFilter {
+  every: ShortAnswerQuestionsWhereInput
+  some: ShortAnswerQuestionsWhereInput
+  none: ShortAnswerQuestionsWhereInput
+}
+
+input ShortAnswerQuestionsWhereInput {
+  AND: [ShortAnswerQuestionsWhereInput!]
+  OR: [ShortAnswerQuestionsWhereInput!]
+  NOT: [ShortAnswerQuestionsWhereInput!]
+  short_answer_question_id: StringFilter
+  challenges: ChallengesRelationFilter
+  challenge_id: StringFilter
+  question: StringFilter
+  hint: StringFilter
+  answer: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input FlagQuestionsListRelationFilter {
+  every: FlagQuestionsWhereInput
+  some: FlagQuestionsWhereInput
+  none: FlagQuestionsWhereInput
+}
+
+input FlagQuestionsWhereInput {
+  AND: [FlagQuestionsWhereInput!]
+  OR: [FlagQuestionsWhereInput!]
+  NOT: [FlagQuestionsWhereInput!]
+  flag_question_id: StringFilter
+  challenges: ChallengesRelationFilter
+  challenge_id: StringFilter
+  video_link: StringFilter
+  description: StringFilter
+  question: StringFilter
+  answer: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TeamMembersListRelationFilter {
+  every: TeamMembersWhereInput
+  some: TeamMembersWhereInput
+  none: TeamMembersWhereInput
+}
+
+input TeamMembersWhereInput {
+  AND: [TeamMembersWhereInput!]
+  OR: [TeamMembersWhereInput!]
+  NOT: [TeamMembersWhereInput!]
+  users: UsersRelationFilter
+  user_id: StringFilter
+  teams: TeamsRelationFilter
+  team_id: StringFilter
+  type: StringFilter
+  status: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TeamsRelationFilter {
+  is: TeamsWhereInput
+  isNot: TeamsWhereInput
+}
+
+input TeamsWhereInput {
+  AND: [TeamsWhereInput!]
+  OR: [TeamsWhereInput!]
+  NOT: [TeamsWhereInput!]
+  team_id: StringFilter
+  team_profile_pic: StringNullableFilter
+  name: StringFilter
+  conuntry_code: StringFilter
+  banned: BoolFilter
+  github_link: StringFilter
+  twitter_link: StringFilter
+  facebook_link: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  teamMembers: TeamMembersListRelationFilter
+}
+
+input UserTutorialsListRelationFilter {
+  every: UserTutorialsWhereInput
+  some: UserTutorialsWhereInput
+  none: UserTutorialsWhereInput
+}
+
+input UserTutorialsWhereInput {
+  AND: [UserTutorialsWhereInput!]
+  OR: [UserTutorialsWhereInput!]
+  NOT: [UserTutorialsWhereInput!]
+  users: UsersRelationFilter
+  user_id: StringFilter
+  tutorialChapterDatas: TutorialChapterDatasRelationFilter
+  chapter_id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TutorialChapterDatasRelationFilter {
+  is: TutorialChapterDatasWhereInput
+  isNot: TutorialChapterDatasWhereInput
+}
+
+input TutorialChapterDatasWhereInput {
+  AND: [TutorialChapterDatasWhereInput!]
+  OR: [TutorialChapterDatasWhereInput!]
+  NOT: [TutorialChapterDatasWhereInput!]
+  chapter_id: StringFilter
+  tutorialContents: TutorialContentsRelationFilter
+  tutorial_id: StringFilter
+  chapter_name: StringFilter
+  video_link: StringFilter
+  flag_link: StringFilter
+  description: StringFilter
+  question: StringFilter
+  answer: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  userTutorials: UserTutorialsListRelationFilter
+}
+
+input TutorialContentsRelationFilter {
+  is: TutorialContentsWhereInput
+  isNot: TutorialContentsWhereInput
+}
+
+input TutorialContentsWhereInput {
+  AND: [TutorialContentsWhereInput!]
+  OR: [TutorialContentsWhereInput!]
+  NOT: [TutorialContentsWhereInput!]
+  tutorial_id: StringFilter
+  name: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+  tutorialChapterDatas: TutorialChapterDatasListRelationFilter
+}
+
+input TutorialChapterDatasListRelationFilter {
+  every: TutorialChapterDatasWhereInput
+  some: TutorialChapterDatasWhereInput
+  none: TutorialChapterDatasWhereInput
+}
+
+input UsersOrderByWithRelationInput {
+  user_id: SortOrder
+  user_invite_id: SortOrder
+  profile_pic: SortOrder
+  total_score: SortOrder
+  type: SortOrder
+  name: SortOrder
+  password: SortOrder
+  email: SortOrder
+  conuntry_code: SortOrder
+  banned: SortOrder
+  verified: SortOrder
+  quick_start_status: SortOrder
+  profile_description: SortOrder
+  github_link: SortOrder
+  twitter_link: SortOrder
+  facebook_link: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  userLoggings: UserLoggingsOrderByRelationAggregateInput
+  userBadges: UserBadgesOrderByRelationAggregateInput
+  teamMembers: TeamMembersOrderByRelationAggregateInput
+  userTutorials: UserTutorialsOrderByRelationAggregateInput
+  userScores: UserScoresOrderByRelationAggregateInput
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input UserLoggingsOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input UserBadgesOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input TeamMembersOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input UserTutorialsOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input UserScoresOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input UsersWhereUniqueInput {
+  user_id: String
+  user_invite_id: Int
+}
+
+enum UsersScalarFieldEnum {
+  user_id
+  user_invite_id
+  profile_pic
+  total_score
+  type
+  name
+  password
+  email
+  conuntry_code
+  banned
+  verified
+  quick_start_status
+  profile_description
+  github_link
+  twitter_link
+  facebook_link
+  createdAt
+  updatedAt
+}
+
+type Mutation {
+  createUser(data: UsersCreateInput!): Users
+  updateUser(data: UsersUpdateInput!, where: UsersWhereUniqueInput!): Users
+  deleteUser(where: UsersWhereUniqueInput!): Users
+}
+
+input UsersCreateInput {
+  user_id: String
+  user_invite_id: Int
+  profile_pic: String
+  total_score: Float
+  type: String
+  name: String!
+  password: String!
+  email: String!
+  conuntry_code: String
+  banned: Boolean
+  verified: Boolean
+  quick_start_status: Boolean
+  profile_description: String
+  github_link: String
+  twitter_link: String
+  facebook_link: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  userLoggings: UserLoggingsCreateNestedManyWithoutUsersInput
+  userBadges: UserBadgesCreateNestedManyWithoutUsersInput
+  teamMembers: TeamMembersCreateNestedManyWithoutUsersInput
+  userTutorials: UserTutorialsCreateNestedManyWithoutUsersInput
+  userScores: UserScoresCreateNestedManyWithoutUsersInput
+}
+
+input UserLoggingsCreateNestedManyWithoutUsersInput {
+  create: [UserLoggingsCreateWithoutUsersInput!]
+  connectOrCreate: [UserLoggingsCreateOrConnectWithoutUsersInput!]
+  createMany: UserLoggingsCreateManyUsersInputEnvelope
+  connect: [UserLoggingsWhereUniqueInput!]
+}
+
+input UserLoggingsCreateWithoutUsersInput {
+  log_id: String
+  action: String!
+  ip: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UserLoggingsCreateOrConnectWithoutUsersInput {
+  where: UserLoggingsWhereUniqueInput!
+  create: UserLoggingsCreateWithoutUsersInput!
+}
+
+input UserLoggingsWhereUniqueInput {
+  log_id: String
+}
+
+input UserLoggingsCreateManyUsersInputEnvelope {
+  data: [UserLoggingsCreateManyUsersInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserLoggingsCreateManyUsersInput {
+  log_id: String
+  action: String!
+  ip: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UserBadgesCreateNestedManyWithoutUsersInput {
+  create: [UserBadgesCreateWithoutUsersInput!]
+  connectOrCreate: [UserBadgesCreateOrConnectWithoutUsersInput!]
+  createMany: UserBadgesCreateManyUsersInputEnvelope
+  connect: [UserBadgesWhereUniqueInput!]
+}
+
+input UserBadgesCreateWithoutUsersInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  badges: BadgesCreateNestedOneWithoutUserBadgesInput!
+}
+
+input BadgesCreateNestedOneWithoutUserBadgesInput {
+  create: BadgesCreateWithoutUserBadgesInput
+  connectOrCreate: BadgesCreateOrConnectWithoutUserBadgesInput
+  connect: BadgesWhereUniqueInput
+}
+
+input BadgesCreateWithoutUserBadgesInput {
+  badge_id: String
+  condition: String
+  name: String
+  link: String
+  description: String
+  status: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+  events: EventsCreateNestedManyWithoutBadgesInput
+  challenges: ChallengesCreateNestedManyWithoutBadgesInput
+}
+
+input EventsCreateNestedManyWithoutBadgesInput {
+  create: [EventsCreateWithoutBadgesInput!]
+  connectOrCreate: [EventsCreateOrConnectWithoutBadgesInput!]
+  createMany: EventsCreateManyBadgesInputEnvelope
+  connect: [EventsWhereUniqueInput!]
+}
+
+input EventsCreateWithoutBadgesInput {
+  event_id: String
+  name: String
+  evnet_description: String
+  flag_link: String
+  description: String
+  question: String
+  answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input EventsCreateOrConnectWithoutBadgesInput {
+  where: EventsWhereUniqueInput!
+  create: EventsCreateWithoutBadgesInput!
+}
+
+input EventsWhereUniqueInput {
+  event_id: String
+}
+
+input EventsCreateManyBadgesInputEnvelope {
+  data: [EventsCreateManyBadgesInput!]!
+  skipDuplicates: Boolean
+}
+
+input EventsCreateManyBadgesInput {
+  event_id: String
+  name: String
+  evnet_description: String
+  flag_link: String
+  description: String
+  question: String
+  answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ChallengesCreateNestedManyWithoutBadgesInput {
+  create: [ChallengesCreateWithoutBadgesInput!]
+  connectOrCreate: [ChallengesCreateOrConnectWithoutBadgesInput!]
+  createMany: ChallengesCreateManyBadgesInputEnvelope
+  connect: [ChallengesWhereUniqueInput!]
+}
+
+input ChallengesCreateWithoutBadgesInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  levels: LevelsCreateNestedOneWithoutChallengesInput!
+  types: TypesCreateNestedOneWithoutChallengesInput!
+  categories: CategoriesCreateNestedOneWithoutChallengesInput!
+  userScores: UserScoresCreateNestedManyWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsCreateNestedManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsCreateNestedManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsCreateNestedManyWithoutChallengesInput
+}
+
+input LevelsCreateNestedOneWithoutChallengesInput {
+  create: LevelsCreateWithoutChallengesInput
+  connectOrCreate: LevelsCreateOrConnectWithoutChallengesInput
+  connect: LevelsWhereUniqueInput
+}
+
+input LevelsCreateWithoutChallengesInput {
+  level_id: String
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  userScores: UserScoresCreateNestedManyWithoutLevelsInput
+}
+
+input UserScoresCreateNestedManyWithoutLevelsInput {
+  create: [UserScoresCreateWithoutLevelsInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutLevelsInput!]
+  createMany: UserScoresCreateManyLevelsInputEnvelope
+  connect: [UserScoresWhereUniqueInput!]
+}
+
+input UserScoresCreateWithoutLevelsInput {
+  base_score: Int
+  time_score: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UsersCreateNestedOneWithoutUserScoresInput!
+  challenges: ChallengesCreateNestedOneWithoutUserScoresInput!
+  types: TypesCreateNestedOneWithoutUserScoresInput!
+  categories: CategoriesCreateNestedOneWithoutUserScoresInput!
+}
+
+input UsersCreateNestedOneWithoutUserScoresInput {
+  create: UsersCreateWithoutUserScoresInput
+  connectOrCreate: UsersCreateOrConnectWithoutUserScoresInput
+  connect: UsersWhereUniqueInput
+}
+
+input UsersCreateWithoutUserScoresInput {
+  user_id: String
+  user_invite_id: Int
+  profile_pic: String
+  total_score: Float
+  type: String
+  name: String!
+  password: String!
+  email: String!
+  conuntry_code: String
+  banned: Boolean
+  verified: Boolean
+  quick_start_status: Boolean
+  profile_description: String
+  github_link: String
+  twitter_link: String
+  facebook_link: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  userLoggings: UserLoggingsCreateNestedManyWithoutUsersInput
+  userBadges: UserBadgesCreateNestedManyWithoutUsersInput
+  teamMembers: TeamMembersCreateNestedManyWithoutUsersInput
+  userTutorials: UserTutorialsCreateNestedManyWithoutUsersInput
+}
+
+input TeamMembersCreateNestedManyWithoutUsersInput {
+  create: [TeamMembersCreateWithoutUsersInput!]
+  connectOrCreate: [TeamMembersCreateOrConnectWithoutUsersInput!]
+  createMany: TeamMembersCreateManyUsersInputEnvelope
+  connect: [TeamMembersWhereUniqueInput!]
+}
+
+input TeamMembersCreateWithoutUsersInput {
+  type: String
+  status: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+  teams: TeamsCreateNestedOneWithoutTeamMembersInput!
+}
+
+input TeamsCreateNestedOneWithoutTeamMembersInput {
+  create: TeamsCreateWithoutTeamMembersInput
+  connectOrCreate: TeamsCreateOrConnectWithoutTeamMembersInput
+  connect: TeamsWhereUniqueInput
+}
+
+input TeamsCreateWithoutTeamMembersInput {
+  team_id: String
+  team_profile_pic: String
+  name: String!
+  conuntry_code: String
+  banned: Boolean
+  github_link: String
+  twitter_link: String
+  facebook_link: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TeamsCreateOrConnectWithoutTeamMembersInput {
+  where: TeamsWhereUniqueInput!
+  create: TeamsCreateWithoutTeamMembersInput!
+}
+
+input TeamsWhereUniqueInput {
+  team_id: String
+}
+
+input TeamMembersCreateOrConnectWithoutUsersInput {
+  where: TeamMembersWhereUniqueInput!
+  create: TeamMembersCreateWithoutUsersInput!
+}
+
+input TeamMembersWhereUniqueInput {
+  user_id: String
+}
+
+input TeamMembersCreateManyUsersInputEnvelope {
+  data: [TeamMembersCreateManyUsersInput!]!
+  skipDuplicates: Boolean
+}
+
+input TeamMembersCreateManyUsersInput {
+  team_id: String!
+  type: String
+  status: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UserTutorialsCreateNestedManyWithoutUsersInput {
+  create: [UserTutorialsCreateWithoutUsersInput!]
+  connectOrCreate: [UserTutorialsCreateOrConnectWithoutUsersInput!]
+  createMany: UserTutorialsCreateManyUsersInputEnvelope
+  connect: [UserTutorialsWhereUniqueInput!]
+}
+
+input UserTutorialsCreateWithoutUsersInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  tutorialChapterDatas: TutorialChapterDatasCreateNestedOneWithoutUserTutorialsInput!
+}
+
+input TutorialChapterDatasCreateNestedOneWithoutUserTutorialsInput {
+  create: TutorialChapterDatasCreateWithoutUserTutorialsInput
+  connectOrCreate: TutorialChapterDatasCreateOrConnectWithoutUserTutorialsInput
+  connect: TutorialChapterDatasWhereUniqueInput
+}
+
+input TutorialChapterDatasCreateWithoutUserTutorialsInput {
+  chapter_id: String
+  chapter_name: String
+  video_link: String
+  flag_link: String
+  description: String
+  question: String
+  answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  tutorialContents: TutorialContentsCreateNestedOneWithoutTutorialChapterDatasInput!
+}
+
+input TutorialContentsCreateNestedOneWithoutTutorialChapterDatasInput {
+  create: TutorialContentsCreateWithoutTutorialChapterDatasInput
+  connectOrCreate: TutorialContentsCreateOrConnectWithoutTutorialChapterDatasInput
+  connect: TutorialContentsWhereUniqueInput
+}
+
+input TutorialContentsCreateWithoutTutorialChapterDatasInput {
+  tutorial_id: String
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TutorialContentsCreateOrConnectWithoutTutorialChapterDatasInput {
+  where: TutorialContentsWhereUniqueInput!
+  create: TutorialContentsCreateWithoutTutorialChapterDatasInput!
+}
+
+input TutorialContentsWhereUniqueInput {
+  tutorial_id: String
+}
+
+input TutorialChapterDatasCreateOrConnectWithoutUserTutorialsInput {
+  where: TutorialChapterDatasWhereUniqueInput!
+  create: TutorialChapterDatasCreateWithoutUserTutorialsInput!
+}
+
+input TutorialChapterDatasWhereUniqueInput {
+  chapter_id: String
+}
+
+input UserTutorialsCreateOrConnectWithoutUsersInput {
+  where: UserTutorialsWhereUniqueInput!
+  create: UserTutorialsCreateWithoutUsersInput!
+}
+
+input UserTutorialsWhereUniqueInput {
+  user_id_chapter_id: UserTutorialsUser_idChapter_idCompoundUniqueInput
+}
+
+input UserTutorialsUser_idChapter_idCompoundUniqueInput {
+  user_id: String!
+  chapter_id: String!
+}
+
+input UserTutorialsCreateManyUsersInputEnvelope {
+  data: [UserTutorialsCreateManyUsersInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserTutorialsCreateManyUsersInput {
+  chapter_id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UsersCreateOrConnectWithoutUserScoresInput {
+  where: UsersWhereUniqueInput!
+  create: UsersCreateWithoutUserScoresInput!
+}
+
+input ChallengesCreateNestedOneWithoutUserScoresInput {
+  create: ChallengesCreateWithoutUserScoresInput
+  connectOrCreate: ChallengesCreateOrConnectWithoutUserScoresInput
+  connect: ChallengesWhereUniqueInput
+}
+
+input ChallengesCreateWithoutUserScoresInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  levels: LevelsCreateNestedOneWithoutChallengesInput!
+  types: TypesCreateNestedOneWithoutChallengesInput!
+  categories: CategoriesCreateNestedOneWithoutChallengesInput!
+  badges: BadgesCreateNestedOneWithoutChallengesInput!
+  multipleQuestions: MultipleQuestionsCreateNestedManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsCreateNestedManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsCreateNestedManyWithoutChallengesInput
+}
+
+input TypesCreateNestedOneWithoutChallengesInput {
+  create: TypesCreateWithoutChallengesInput
+  connectOrCreate: TypesCreateOrConnectWithoutChallengesInput
+  connect: TypesWhereUniqueInput
+}
+
+input TypesCreateWithoutChallengesInput {
+  types_id: String
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  userScores: UserScoresCreateNestedManyWithoutTypesInput
+}
+
+input UserScoresCreateNestedManyWithoutTypesInput {
+  create: [UserScoresCreateWithoutTypesInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutTypesInput!]
+  createMany: UserScoresCreateManyTypesInputEnvelope
+  connect: [UserScoresWhereUniqueInput!]
+}
+
+input UserScoresCreateWithoutTypesInput {
+  base_score: Int
+  time_score: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UsersCreateNestedOneWithoutUserScoresInput!
+  challenges: ChallengesCreateNestedOneWithoutUserScoresInput!
+  levels: LevelsCreateNestedOneWithoutUserScoresInput!
+  categories: CategoriesCreateNestedOneWithoutUserScoresInput!
+}
+
+input LevelsCreateNestedOneWithoutUserScoresInput {
+  create: LevelsCreateWithoutUserScoresInput
+  connectOrCreate: LevelsCreateOrConnectWithoutUserScoresInput
+  connect: LevelsWhereUniqueInput
+}
+
+input LevelsCreateWithoutUserScoresInput {
+  level_id: String
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  challenges: ChallengesCreateNestedManyWithoutLevelsInput
+}
+
+input ChallengesCreateNestedManyWithoutLevelsInput {
+  create: [ChallengesCreateWithoutLevelsInput!]
+  connectOrCreate: [ChallengesCreateOrConnectWithoutLevelsInput!]
+  createMany: ChallengesCreateManyLevelsInputEnvelope
+  connect: [ChallengesWhereUniqueInput!]
+}
+
+input ChallengesCreateWithoutLevelsInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  types: TypesCreateNestedOneWithoutChallengesInput!
+  categories: CategoriesCreateNestedOneWithoutChallengesInput!
+  badges: BadgesCreateNestedOneWithoutChallengesInput!
+  userScores: UserScoresCreateNestedManyWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsCreateNestedManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsCreateNestedManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsCreateNestedManyWithoutChallengesInput
+}
+
+input CategoriesCreateNestedOneWithoutChallengesInput {
+  create: CategoriesCreateWithoutChallengesInput
+  connectOrCreate: CategoriesCreateOrConnectWithoutChallengesInput
+  connect: CategoriesWhereUniqueInput
+}
+
+input CategoriesCreateWithoutChallengesInput {
+  categories_id: String
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  userScores: UserScoresCreateNestedManyWithoutCategoriesInput
+}
+
+input UserScoresCreateNestedManyWithoutCategoriesInput {
+  create: [UserScoresCreateWithoutCategoriesInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutCategoriesInput!]
+  createMany: UserScoresCreateManyCategoriesInputEnvelope
+  connect: [UserScoresWhereUniqueInput!]
+}
+
+input UserScoresCreateWithoutCategoriesInput {
+  base_score: Int
+  time_score: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UsersCreateNestedOneWithoutUserScoresInput!
+  challenges: ChallengesCreateNestedOneWithoutUserScoresInput!
+  levels: LevelsCreateNestedOneWithoutUserScoresInput!
+  types: TypesCreateNestedOneWithoutUserScoresInput!
+}
+
+input TypesCreateNestedOneWithoutUserScoresInput {
+  create: TypesCreateWithoutUserScoresInput
+  connectOrCreate: TypesCreateOrConnectWithoutUserScoresInput
+  connect: TypesWhereUniqueInput
+}
+
+input TypesCreateWithoutUserScoresInput {
+  types_id: String
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  challenges: ChallengesCreateNestedManyWithoutTypesInput
+}
+
+input ChallengesCreateNestedManyWithoutTypesInput {
+  create: [ChallengesCreateWithoutTypesInput!]
+  connectOrCreate: [ChallengesCreateOrConnectWithoutTypesInput!]
+  createMany: ChallengesCreateManyTypesInputEnvelope
+  connect: [ChallengesWhereUniqueInput!]
+}
+
+input ChallengesCreateWithoutTypesInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  levels: LevelsCreateNestedOneWithoutChallengesInput!
+  categories: CategoriesCreateNestedOneWithoutChallengesInput!
+  badges: BadgesCreateNestedOneWithoutChallengesInput!
+  userScores: UserScoresCreateNestedManyWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsCreateNestedManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsCreateNestedManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsCreateNestedManyWithoutChallengesInput
+}
+
+input BadgesCreateNestedOneWithoutChallengesInput {
+  create: BadgesCreateWithoutChallengesInput
+  connectOrCreate: BadgesCreateOrConnectWithoutChallengesInput
+  connect: BadgesWhereUniqueInput
+}
+
+input BadgesCreateWithoutChallengesInput {
+  badge_id: String
+  condition: String
+  name: String
+  link: String
+  description: String
+  status: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+  userBadges: UserBadgesCreateNestedManyWithoutBadgesInput
+  events: EventsCreateNestedManyWithoutBadgesInput
+}
+
+input UserBadgesCreateNestedManyWithoutBadgesInput {
+  create: [UserBadgesCreateWithoutBadgesInput!]
+  connectOrCreate: [UserBadgesCreateOrConnectWithoutBadgesInput!]
+  createMany: UserBadgesCreateManyBadgesInputEnvelope
+  connect: [UserBadgesWhereUniqueInput!]
+}
+
+input UserBadgesCreateWithoutBadgesInput {
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UsersCreateNestedOneWithoutUserBadgesInput!
+}
+
+input UsersCreateNestedOneWithoutUserBadgesInput {
+  create: UsersCreateWithoutUserBadgesInput
+  connectOrCreate: UsersCreateOrConnectWithoutUserBadgesInput
+  connect: UsersWhereUniqueInput
+}
+
+input UsersCreateWithoutUserBadgesInput {
+  user_id: String
+  user_invite_id: Int
+  profile_pic: String
+  total_score: Float
+  type: String
+  name: String!
+  password: String!
+  email: String!
+  conuntry_code: String
+  banned: Boolean
+  verified: Boolean
+  quick_start_status: Boolean
+  profile_description: String
+  github_link: String
+  twitter_link: String
+  facebook_link: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  userLoggings: UserLoggingsCreateNestedManyWithoutUsersInput
+  teamMembers: TeamMembersCreateNestedManyWithoutUsersInput
+  userTutorials: UserTutorialsCreateNestedManyWithoutUsersInput
+  userScores: UserScoresCreateNestedManyWithoutUsersInput
+}
+
+input UserScoresCreateNestedManyWithoutUsersInput {
+  create: [UserScoresCreateWithoutUsersInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutUsersInput!]
+  createMany: UserScoresCreateManyUsersInputEnvelope
+  connect: [UserScoresWhereUniqueInput!]
+}
+
+input UserScoresCreateWithoutUsersInput {
+  base_score: Int
+  time_score: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  challenges: ChallengesCreateNestedOneWithoutUserScoresInput!
+  levels: LevelsCreateNestedOneWithoutUserScoresInput!
+  types: TypesCreateNestedOneWithoutUserScoresInput!
+  categories: CategoriesCreateNestedOneWithoutUserScoresInput!
+}
+
+input CategoriesCreateNestedOneWithoutUserScoresInput {
+  create: CategoriesCreateWithoutUserScoresInput
+  connectOrCreate: CategoriesCreateOrConnectWithoutUserScoresInput
+  connect: CategoriesWhereUniqueInput
+}
+
+input CategoriesCreateWithoutUserScoresInput {
+  categories_id: String
+  name: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  challenges: ChallengesCreateNestedManyWithoutCategoriesInput
+}
+
+input ChallengesCreateNestedManyWithoutCategoriesInput {
+  create: [ChallengesCreateWithoutCategoriesInput!]
+  connectOrCreate: [ChallengesCreateOrConnectWithoutCategoriesInput!]
+  createMany: ChallengesCreateManyCategoriesInputEnvelope
+  connect: [ChallengesWhereUniqueInput!]
+}
+
+input ChallengesCreateWithoutCategoriesInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+  levels: LevelsCreateNestedOneWithoutChallengesInput!
+  types: TypesCreateNestedOneWithoutChallengesInput!
+  badges: BadgesCreateNestedOneWithoutChallengesInput!
+  userScores: UserScoresCreateNestedManyWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsCreateNestedManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsCreateNestedManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsCreateNestedManyWithoutChallengesInput
+}
+
+input UserScoresCreateNestedManyWithoutChallengesInput {
+  create: [UserScoresCreateWithoutChallengesInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutChallengesInput!]
+  createMany: UserScoresCreateManyChallengesInputEnvelope
+  connect: [UserScoresWhereUniqueInput!]
+}
+
+input UserScoresCreateWithoutChallengesInput {
+  base_score: Int
+  time_score: Float
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UsersCreateNestedOneWithoutUserScoresInput!
+  levels: LevelsCreateNestedOneWithoutUserScoresInput!
+  types: TypesCreateNestedOneWithoutUserScoresInput!
+  categories: CategoriesCreateNestedOneWithoutUserScoresInput!
+}
+
+input UserScoresCreateOrConnectWithoutChallengesInput {
+  where: UserScoresWhereUniqueInput!
+  create: UserScoresCreateWithoutChallengesInput!
+}
+
+input UserScoresWhereUniqueInput {
+  user_id_challenge_id: UserScoresUser_idChallenge_idCompoundUniqueInput
+}
+
+input UserScoresUser_idChallenge_idCompoundUniqueInput {
+  user_id: String!
+  challenge_id: String!
+}
+
+input UserScoresCreateManyChallengesInputEnvelope {
+  data: [UserScoresCreateManyChallengesInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserScoresCreateManyChallengesInput {
+  user_id: String!
+  base_score: Int
+  time_score: Float
+  level_id: String!
+  types_id: String!
+  categories_id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input MultipleQuestionsCreateNestedManyWithoutChallengesInput {
+  create: [MultipleQuestionsCreateWithoutChallengesInput!]
+  connectOrCreate: [MultipleQuestionsCreateOrConnectWithoutChallengesInput!]
+  createMany: MultipleQuestionsCreateManyChallengesInputEnvelope
+  connect: [MultipleQuestionsWhereUniqueInput!]
+}
+
+input MultipleQuestionsCreateWithoutChallengesInput {
+  multiple_question_id: String
+  question: String
+  hint: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  multipleChoiceQuestion: MultipleChoiceQuestionCreateNestedManyWithoutMultipleQuestionsInput
+}
+
+input MultipleChoiceQuestionCreateNestedManyWithoutMultipleQuestionsInput {
+  create: [MultipleChoiceQuestionCreateWithoutMultipleQuestionsInput!]
+  connectOrCreate: [MultipleChoiceQuestionCreateOrConnectWithoutMultipleQuestionsInput!]
+  createMany: MultipleChoiceQuestionCreateManyMultipleQuestionsInputEnvelope
+  connect: [MultipleChoiceQuestionWhereUniqueInput!]
+}
+
+input MultipleChoiceQuestionCreateWithoutMultipleQuestionsInput {
+  multiple_choice_question_id: String
+  answer: String
+  correct_flag: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input MultipleChoiceQuestionCreateOrConnectWithoutMultipleQuestionsInput {
+  where: MultipleChoiceQuestionWhereUniqueInput!
+  create: MultipleChoiceQuestionCreateWithoutMultipleQuestionsInput!
+}
+
+input MultipleChoiceQuestionWhereUniqueInput {
+  multiple_choice_question_id: String
+}
+
+input MultipleChoiceQuestionCreateManyMultipleQuestionsInputEnvelope {
+  data: [MultipleChoiceQuestionCreateManyMultipleQuestionsInput!]!
+  skipDuplicates: Boolean
+}
+
+input MultipleChoiceQuestionCreateManyMultipleQuestionsInput {
+  multiple_choice_question_id: String
+  answer: String
+  correct_flag: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input MultipleQuestionsCreateOrConnectWithoutChallengesInput {
+  where: MultipleQuestionsWhereUniqueInput!
+  create: MultipleQuestionsCreateWithoutChallengesInput!
+}
+
+input MultipleQuestionsWhereUniqueInput {
+  multiple_question_id: String
+}
+
+input MultipleQuestionsCreateManyChallengesInputEnvelope {
+  data: [MultipleQuestionsCreateManyChallengesInput!]!
+  skipDuplicates: Boolean
+}
+
+input MultipleQuestionsCreateManyChallengesInput {
+  multiple_question_id: String
+  question: String
+  hint: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ShortAnswerQuestionsCreateNestedManyWithoutChallengesInput {
+  create: [ShortAnswerQuestionsCreateWithoutChallengesInput!]
+  connectOrCreate: [ShortAnswerQuestionsCreateOrConnectWithoutChallengesInput!]
+  createMany: ShortAnswerQuestionsCreateManyChallengesInputEnvelope
+  connect: [ShortAnswerQuestionsWhereUniqueInput!]
+}
+
+input ShortAnswerQuestionsCreateWithoutChallengesInput {
+  short_answer_question_id: String
+  question: String
+  hint: String
+  answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ShortAnswerQuestionsCreateOrConnectWithoutChallengesInput {
+  where: ShortAnswerQuestionsWhereUniqueInput!
+  create: ShortAnswerQuestionsCreateWithoutChallengesInput!
+}
+
+input ShortAnswerQuestionsWhereUniqueInput {
+  short_answer_question_id: String
+}
+
+input ShortAnswerQuestionsCreateManyChallengesInputEnvelope {
+  data: [ShortAnswerQuestionsCreateManyChallengesInput!]!
+  skipDuplicates: Boolean
+}
+
+input ShortAnswerQuestionsCreateManyChallengesInput {
+  short_answer_question_id: String
+  question: String
+  hint: String
+  answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input FlagQuestionsCreateNestedManyWithoutChallengesInput {
+  create: [FlagQuestionsCreateWithoutChallengesInput!]
+  connectOrCreate: [FlagQuestionsCreateOrConnectWithoutChallengesInput!]
+  createMany: FlagQuestionsCreateManyChallengesInputEnvelope
+  connect: [FlagQuestionsWhereUniqueInput!]
+}
+
+input FlagQuestionsCreateWithoutChallengesInput {
+  flag_question_id: String
+  video_link: String
+  description: String
+  question: String
+  answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input FlagQuestionsCreateOrConnectWithoutChallengesInput {
+  where: FlagQuestionsWhereUniqueInput!
+  create: FlagQuestionsCreateWithoutChallengesInput!
+}
+
+input FlagQuestionsWhereUniqueInput {
+  flag_question_id: String
+}
+
+input FlagQuestionsCreateManyChallengesInputEnvelope {
+  data: [FlagQuestionsCreateManyChallengesInput!]!
+  skipDuplicates: Boolean
+}
+
+input FlagQuestionsCreateManyChallengesInput {
+  flag_question_id: String
+  video_link: String
+  description: String
+  question: String
+  answer: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ChallengesCreateOrConnectWithoutCategoriesInput {
+  where: ChallengesWhereUniqueInput!
+  create: ChallengesCreateWithoutCategoriesInput!
+}
+
+input ChallengesWhereUniqueInput {
+  challenge_id: String
+}
+
+input ChallengesCreateManyCategoriesInputEnvelope {
+  data: [ChallengesCreateManyCategoriesInput!]!
+  skipDuplicates: Boolean
+}
+
+input ChallengesCreateManyCategoriesInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  level_id: String!
+  types_id: String!
+  award_badge: String!
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input CategoriesCreateOrConnectWithoutUserScoresInput {
+  where: CategoriesWhereUniqueInput!
+  create: CategoriesCreateWithoutUserScoresInput!
+}
+
+input CategoriesWhereUniqueInput {
+  categories_id: String
+}
+
+input UserScoresCreateOrConnectWithoutUsersInput {
+  where: UserScoresWhereUniqueInput!
+  create: UserScoresCreateWithoutUsersInput!
+}
+
+input UserScoresCreateManyUsersInputEnvelope {
+  data: [UserScoresCreateManyUsersInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserScoresCreateManyUsersInput {
+  challenge_id: String!
+  base_score: Int
+  time_score: Float
+  level_id: String!
+  types_id: String!
+  categories_id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UsersCreateOrConnectWithoutUserBadgesInput {
+  where: UsersWhereUniqueInput!
+  create: UsersCreateWithoutUserBadgesInput!
+}
+
+input UserBadgesCreateOrConnectWithoutBadgesInput {
+  where: UserBadgesWhereUniqueInput!
+  create: UserBadgesCreateWithoutBadgesInput!
+}
+
+input UserBadgesWhereUniqueInput {
+  badge_id_user_id: UserBadgesBadge_idUser_idCompoundUniqueInput
+}
+
+input UserBadgesBadge_idUser_idCompoundUniqueInput {
+  badge_id: String!
+  user_id: String!
+}
+
+input UserBadgesCreateManyBadgesInputEnvelope {
+  data: [UserBadgesCreateManyBadgesInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserBadgesCreateManyBadgesInput {
+  user_id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input BadgesCreateOrConnectWithoutChallengesInput {
+  where: BadgesWhereUniqueInput!
+  create: BadgesCreateWithoutChallengesInput!
+}
+
+input BadgesWhereUniqueInput {
+  badge_id: String
+}
+
+input ChallengesCreateOrConnectWithoutTypesInput {
+  where: ChallengesWhereUniqueInput!
+  create: ChallengesCreateWithoutTypesInput!
+}
+
+input ChallengesCreateManyTypesInputEnvelope {
+  data: [ChallengesCreateManyTypesInput!]!
+  skipDuplicates: Boolean
+}
+
+input ChallengesCreateManyTypesInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  level_id: String!
+  categories_id: String!
+  award_badge: String!
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TypesCreateOrConnectWithoutUserScoresInput {
+  where: TypesWhereUniqueInput!
+  create: TypesCreateWithoutUserScoresInput!
+}
+
+input TypesWhereUniqueInput {
+  types_id: String
+}
+
+input UserScoresCreateOrConnectWithoutCategoriesInput {
+  where: UserScoresWhereUniqueInput!
+  create: UserScoresCreateWithoutCategoriesInput!
+}
+
+input UserScoresCreateManyCategoriesInputEnvelope {
+  data: [UserScoresCreateManyCategoriesInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserScoresCreateManyCategoriesInput {
+  user_id: String!
+  challenge_id: String!
+  base_score: Int
+  time_score: Float
+  level_id: String!
+  types_id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input CategoriesCreateOrConnectWithoutChallengesInput {
+  where: CategoriesWhereUniqueInput!
+  create: CategoriesCreateWithoutChallengesInput!
+}
+
+input ChallengesCreateOrConnectWithoutLevelsInput {
+  where: ChallengesWhereUniqueInput!
+  create: ChallengesCreateWithoutLevelsInput!
+}
+
+input ChallengesCreateManyLevelsInputEnvelope {
+  data: [ChallengesCreateManyLevelsInput!]!
+  skipDuplicates: Boolean
+}
+
+input ChallengesCreateManyLevelsInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  types_id: String!
+  categories_id: String!
+  award_badge: String!
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input LevelsCreateOrConnectWithoutUserScoresInput {
+  where: LevelsWhereUniqueInput!
+  create: LevelsCreateWithoutUserScoresInput!
+}
+
+input LevelsWhereUniqueInput {
+  level_id: String
+}
+
+input UserScoresCreateOrConnectWithoutTypesInput {
+  where: UserScoresWhereUniqueInput!
+  create: UserScoresCreateWithoutTypesInput!
+}
+
+input UserScoresCreateManyTypesInputEnvelope {
+  data: [UserScoresCreateManyTypesInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserScoresCreateManyTypesInput {
+  user_id: String!
+  challenge_id: String!
+  base_score: Int
+  time_score: Float
+  level_id: String!
+  categories_id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TypesCreateOrConnectWithoutChallengesInput {
+  where: TypesWhereUniqueInput!
+  create: TypesCreateWithoutChallengesInput!
+}
+
+input ChallengesCreateOrConnectWithoutUserScoresInput {
+  where: ChallengesWhereUniqueInput!
+  create: ChallengesCreateWithoutUserScoresInput!
+}
+
+input UserScoresCreateOrConnectWithoutLevelsInput {
+  where: UserScoresWhereUniqueInput!
+  create: UserScoresCreateWithoutLevelsInput!
+}
+
+input UserScoresCreateManyLevelsInputEnvelope {
+  data: [UserScoresCreateManyLevelsInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserScoresCreateManyLevelsInput {
+  user_id: String!
+  challenge_id: String!
+  base_score: Int
+  time_score: Float
+  types_id: String!
+  categories_id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input LevelsCreateOrConnectWithoutChallengesInput {
+  where: LevelsWhereUniqueInput!
+  create: LevelsCreateWithoutChallengesInput!
+}
+
+input ChallengesCreateOrConnectWithoutBadgesInput {
+  where: ChallengesWhereUniqueInput!
+  create: ChallengesCreateWithoutBadgesInput!
+}
+
+input ChallengesCreateManyBadgesInputEnvelope {
+  data: [ChallengesCreateManyBadgesInput!]!
+  skipDuplicates: Boolean
+}
+
+input ChallengesCreateManyBadgesInput {
+  challenge_id: String
+  name: String
+  question: String
+  description: String
+  level_id: String!
+  types_id: String!
+  categories_id: String!
+  scorce: Int
+  max_time: Int
+  max_cost: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input BadgesCreateOrConnectWithoutUserBadgesInput {
+  where: BadgesWhereUniqueInput!
+  create: BadgesCreateWithoutUserBadgesInput!
+}
+
+input UserBadgesCreateOrConnectWithoutUsersInput {
+  where: UserBadgesWhereUniqueInput!
+  create: UserBadgesCreateWithoutUsersInput!
+}
+
+input UserBadgesCreateManyUsersInputEnvelope {
+  data: [UserBadgesCreateManyUsersInput!]!
+  skipDuplicates: Boolean
+}
+
+input UserBadgesCreateManyUsersInput {
+  badge_id: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input UsersUpdateInput {
+  user_id: StringFieldUpdateOperationsInput
+  profile_pic: NullableStringFieldUpdateOperationsInput
+  total_score: FloatFieldUpdateOperationsInput
+  type: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  conuntry_code: StringFieldUpdateOperationsInput
+  banned: BoolFieldUpdateOperationsInput
+  verified: BoolFieldUpdateOperationsInput
+  quick_start_status: BoolFieldUpdateOperationsInput
+  profile_description: StringFieldUpdateOperationsInput
+  github_link: StringFieldUpdateOperationsInput
+  twitter_link: StringFieldUpdateOperationsInput
+  facebook_link: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userLoggings: UserLoggingsUpdateManyWithoutUsersInput
+  userBadges: UserBadgesUpdateManyWithoutUsersInput
+  teamMembers: TeamMembersUpdateManyWithoutUsersInput
+  userTutorials: UserTutorialsUpdateManyWithoutUsersInput
+  userScores: UserScoresUpdateManyWithoutUsersInput
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+input FloatFieldUpdateOperationsInput {
+  set: Float
+  increment: Float
+  decrement: Float
+  multiply: Float
+  divide: Float
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input UserLoggingsUpdateManyWithoutUsersInput {
+  create: [UserLoggingsCreateWithoutUsersInput!]
+  connectOrCreate: [UserLoggingsCreateOrConnectWithoutUsersInput!]
+  upsert: [UserLoggingsUpsertWithWhereUniqueWithoutUsersInput!]
+  createMany: UserLoggingsCreateManyUsersInputEnvelope
+  set: [UserLoggingsWhereUniqueInput!]
+  disconnect: [UserLoggingsWhereUniqueInput!]
+  delete: [UserLoggingsWhereUniqueInput!]
+  connect: [UserLoggingsWhereUniqueInput!]
+  update: [UserLoggingsUpdateWithWhereUniqueWithoutUsersInput!]
+  updateMany: [UserLoggingsUpdateManyWithWhereWithoutUsersInput!]
+  deleteMany: [UserLoggingsScalarWhereInput!]
+}
+
+input UserLoggingsUpsertWithWhereUniqueWithoutUsersInput {
+  where: UserLoggingsWhereUniqueInput!
+  update: UserLoggingsUpdateWithoutUsersInput!
+  create: UserLoggingsCreateWithoutUsersInput!
+}
+
+input UserLoggingsUpdateWithoutUsersInput {
+  log_id: StringFieldUpdateOperationsInput
+  action: StringFieldUpdateOperationsInput
+  ip: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserLoggingsUpdateWithWhereUniqueWithoutUsersInput {
+  where: UserLoggingsWhereUniqueInput!
+  data: UserLoggingsUpdateWithoutUsersInput!
+}
+
+input UserLoggingsUpdateManyWithWhereWithoutUsersInput {
+  where: UserLoggingsScalarWhereInput!
+  data: UserLoggingsUpdateManyMutationInput!
+}
+
+input UserLoggingsScalarWhereInput {
+  AND: [UserLoggingsScalarWhereInput!]
+  OR: [UserLoggingsScalarWhereInput!]
+  NOT: [UserLoggingsScalarWhereInput!]
+  log_id: StringFilter
+  user_id: StringFilter
+  action: StringFilter
+  ip: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input UserLoggingsUpdateManyMutationInput {
+  log_id: StringFieldUpdateOperationsInput
+  action: StringFieldUpdateOperationsInput
+  ip: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserBadgesUpdateManyWithoutUsersInput {
+  create: [UserBadgesCreateWithoutUsersInput!]
+  connectOrCreate: [UserBadgesCreateOrConnectWithoutUsersInput!]
+  upsert: [UserBadgesUpsertWithWhereUniqueWithoutUsersInput!]
+  createMany: UserBadgesCreateManyUsersInputEnvelope
+  set: [UserBadgesWhereUniqueInput!]
+  disconnect: [UserBadgesWhereUniqueInput!]
+  delete: [UserBadgesWhereUniqueInput!]
+  connect: [UserBadgesWhereUniqueInput!]
+  update: [UserBadgesUpdateWithWhereUniqueWithoutUsersInput!]
+  updateMany: [UserBadgesUpdateManyWithWhereWithoutUsersInput!]
+  deleteMany: [UserBadgesScalarWhereInput!]
+}
+
+input UserBadgesUpsertWithWhereUniqueWithoutUsersInput {
+  where: UserBadgesWhereUniqueInput!
+  update: UserBadgesUpdateWithoutUsersInput!
+  create: UserBadgesCreateWithoutUsersInput!
+}
+
+input UserBadgesUpdateWithoutUsersInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  badges: BadgesUpdateOneRequiredWithoutUserBadgesInput
+}
+
+input BadgesUpdateOneRequiredWithoutUserBadgesInput {
+  create: BadgesCreateWithoutUserBadgesInput
+  connectOrCreate: BadgesCreateOrConnectWithoutUserBadgesInput
+  upsert: BadgesUpsertWithoutUserBadgesInput
+  connect: BadgesWhereUniqueInput
+  update: BadgesUpdateWithoutUserBadgesInput
+}
+
+input BadgesUpsertWithoutUserBadgesInput {
+  update: BadgesUpdateWithoutUserBadgesInput!
+  create: BadgesCreateWithoutUserBadgesInput!
+}
+
+input BadgesUpdateWithoutUserBadgesInput {
+  badge_id: StringFieldUpdateOperationsInput
+  condition: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  link: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  status: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  events: EventsUpdateManyWithoutBadgesInput
+  challenges: ChallengesUpdateManyWithoutBadgesInput
+}
+
+input EventsUpdateManyWithoutBadgesInput {
+  create: [EventsCreateWithoutBadgesInput!]
+  connectOrCreate: [EventsCreateOrConnectWithoutBadgesInput!]
+  upsert: [EventsUpsertWithWhereUniqueWithoutBadgesInput!]
+  createMany: EventsCreateManyBadgesInputEnvelope
+  set: [EventsWhereUniqueInput!]
+  disconnect: [EventsWhereUniqueInput!]
+  delete: [EventsWhereUniqueInput!]
+  connect: [EventsWhereUniqueInput!]
+  update: [EventsUpdateWithWhereUniqueWithoutBadgesInput!]
+  updateMany: [EventsUpdateManyWithWhereWithoutBadgesInput!]
+  deleteMany: [EventsScalarWhereInput!]
+}
+
+input EventsUpsertWithWhereUniqueWithoutBadgesInput {
+  where: EventsWhereUniqueInput!
+  update: EventsUpdateWithoutBadgesInput!
+  create: EventsCreateWithoutBadgesInput!
+}
+
+input EventsUpdateWithoutBadgesInput {
+  event_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  evnet_description: StringFieldUpdateOperationsInput
+  flag_link: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input EventsUpdateWithWhereUniqueWithoutBadgesInput {
+  where: EventsWhereUniqueInput!
+  data: EventsUpdateWithoutBadgesInput!
+}
+
+input EventsUpdateManyWithWhereWithoutBadgesInput {
+  where: EventsScalarWhereInput!
+  data: EventsUpdateManyMutationInput!
+}
+
+input EventsScalarWhereInput {
+  AND: [EventsScalarWhereInput!]
+  OR: [EventsScalarWhereInput!]
+  NOT: [EventsScalarWhereInput!]
+  event_id: StringFilter
+  name: StringFilter
+  evnet_description: StringFilter
+  award_badge: StringFilter
+  flag_link: StringFilter
+  description: StringFilter
+  question: StringFilter
+  answer: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input EventsUpdateManyMutationInput {
+  event_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  evnet_description: StringFieldUpdateOperationsInput
+  flag_link: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ChallengesUpdateManyWithoutBadgesInput {
+  create: [ChallengesCreateWithoutBadgesInput!]
+  connectOrCreate: [ChallengesCreateOrConnectWithoutBadgesInput!]
+  upsert: [ChallengesUpsertWithWhereUniqueWithoutBadgesInput!]
+  createMany: ChallengesCreateManyBadgesInputEnvelope
+  set: [ChallengesWhereUniqueInput!]
+  disconnect: [ChallengesWhereUniqueInput!]
+  delete: [ChallengesWhereUniqueInput!]
+  connect: [ChallengesWhereUniqueInput!]
+  update: [ChallengesUpdateWithWhereUniqueWithoutBadgesInput!]
+  updateMany: [ChallengesUpdateManyWithWhereWithoutBadgesInput!]
+  deleteMany: [ChallengesScalarWhereInput!]
+}
+
+input ChallengesUpsertWithWhereUniqueWithoutBadgesInput {
+  where: ChallengesWhereUniqueInput!
+  update: ChallengesUpdateWithoutBadgesInput!
+  create: ChallengesCreateWithoutBadgesInput!
+}
+
+input ChallengesUpdateWithoutBadgesInput {
+  challenge_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  scorce: IntFieldUpdateOperationsInput
+  max_time: IntFieldUpdateOperationsInput
+  max_cost: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  levels: LevelsUpdateOneRequiredWithoutChallengesInput
+  types: TypesUpdateOneRequiredWithoutChallengesInput
+  categories: CategoriesUpdateOneRequiredWithoutChallengesInput
+  userScores: UserScoresUpdateManyWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsUpdateManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsUpdateManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsUpdateManyWithoutChallengesInput
+}
+
+input IntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input LevelsUpdateOneRequiredWithoutChallengesInput {
+  create: LevelsCreateWithoutChallengesInput
+  connectOrCreate: LevelsCreateOrConnectWithoutChallengesInput
+  upsert: LevelsUpsertWithoutChallengesInput
+  connect: LevelsWhereUniqueInput
+  update: LevelsUpdateWithoutChallengesInput
+}
+
+input LevelsUpsertWithoutChallengesInput {
+  update: LevelsUpdateWithoutChallengesInput!
+  create: LevelsCreateWithoutChallengesInput!
+}
+
+input LevelsUpdateWithoutChallengesInput {
+  level_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userScores: UserScoresUpdateManyWithoutLevelsInput
+}
+
+input UserScoresUpdateManyWithoutLevelsInput {
+  create: [UserScoresCreateWithoutLevelsInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutLevelsInput!]
+  upsert: [UserScoresUpsertWithWhereUniqueWithoutLevelsInput!]
+  createMany: UserScoresCreateManyLevelsInputEnvelope
+  set: [UserScoresWhereUniqueInput!]
+  disconnect: [UserScoresWhereUniqueInput!]
+  delete: [UserScoresWhereUniqueInput!]
+  connect: [UserScoresWhereUniqueInput!]
+  update: [UserScoresUpdateWithWhereUniqueWithoutLevelsInput!]
+  updateMany: [UserScoresUpdateManyWithWhereWithoutLevelsInput!]
+  deleteMany: [UserScoresScalarWhereInput!]
+}
+
+input UserScoresUpsertWithWhereUniqueWithoutLevelsInput {
+  where: UserScoresWhereUniqueInput!
+  update: UserScoresUpdateWithoutLevelsInput!
+  create: UserScoresCreateWithoutLevelsInput!
+}
+
+input UserScoresUpdateWithoutLevelsInput {
+  base_score: IntFieldUpdateOperationsInput
+  time_score: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  users: UsersUpdateOneRequiredWithoutUserScoresInput
+  challenges: ChallengesUpdateOneRequiredWithoutUserScoresInput
+  types: TypesUpdateOneRequiredWithoutUserScoresInput
+  categories: CategoriesUpdateOneRequiredWithoutUserScoresInput
+}
+
+input UsersUpdateOneRequiredWithoutUserScoresInput {
+  create: UsersCreateWithoutUserScoresInput
+  connectOrCreate: UsersCreateOrConnectWithoutUserScoresInput
+  upsert: UsersUpsertWithoutUserScoresInput
+  connect: UsersWhereUniqueInput
+  update: UsersUpdateWithoutUserScoresInput
+}
+
+input UsersUpsertWithoutUserScoresInput {
+  update: UsersUpdateWithoutUserScoresInput!
+  create: UsersCreateWithoutUserScoresInput!
+}
+
+input UsersUpdateWithoutUserScoresInput {
+  user_id: StringFieldUpdateOperationsInput
+  profile_pic: NullableStringFieldUpdateOperationsInput
+  total_score: FloatFieldUpdateOperationsInput
+  type: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  conuntry_code: StringFieldUpdateOperationsInput
+  banned: BoolFieldUpdateOperationsInput
+  verified: BoolFieldUpdateOperationsInput
+  quick_start_status: BoolFieldUpdateOperationsInput
+  profile_description: StringFieldUpdateOperationsInput
+  github_link: StringFieldUpdateOperationsInput
+  twitter_link: StringFieldUpdateOperationsInput
+  facebook_link: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userLoggings: UserLoggingsUpdateManyWithoutUsersInput
+  userBadges: UserBadgesUpdateManyWithoutUsersInput
+  teamMembers: TeamMembersUpdateManyWithoutUsersInput
+  userTutorials: UserTutorialsUpdateManyWithoutUsersInput
+}
+
+input TeamMembersUpdateManyWithoutUsersInput {
+  create: [TeamMembersCreateWithoutUsersInput!]
+  connectOrCreate: [TeamMembersCreateOrConnectWithoutUsersInput!]
+  upsert: [TeamMembersUpsertWithWhereUniqueWithoutUsersInput!]
+  createMany: TeamMembersCreateManyUsersInputEnvelope
+  set: [TeamMembersWhereUniqueInput!]
+  disconnect: [TeamMembersWhereUniqueInput!]
+  delete: [TeamMembersWhereUniqueInput!]
+  connect: [TeamMembersWhereUniqueInput!]
+  update: [TeamMembersUpdateWithWhereUniqueWithoutUsersInput!]
+  updateMany: [TeamMembersUpdateManyWithWhereWithoutUsersInput!]
+  deleteMany: [TeamMembersScalarWhereInput!]
+}
+
+input TeamMembersUpsertWithWhereUniqueWithoutUsersInput {
+  where: TeamMembersWhereUniqueInput!
+  update: TeamMembersUpdateWithoutUsersInput!
+  create: TeamMembersCreateWithoutUsersInput!
+}
+
+input TeamMembersUpdateWithoutUsersInput {
+  type: StringFieldUpdateOperationsInput
+  status: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  teams: TeamsUpdateOneRequiredWithoutTeamMembersInput
+}
+
+input TeamsUpdateOneRequiredWithoutTeamMembersInput {
+  create: TeamsCreateWithoutTeamMembersInput
+  connectOrCreate: TeamsCreateOrConnectWithoutTeamMembersInput
+  upsert: TeamsUpsertWithoutTeamMembersInput
+  connect: TeamsWhereUniqueInput
+  update: TeamsUpdateWithoutTeamMembersInput
+}
+
+input TeamsUpsertWithoutTeamMembersInput {
+  update: TeamsUpdateWithoutTeamMembersInput!
+  create: TeamsCreateWithoutTeamMembersInput!
+}
+
+input TeamsUpdateWithoutTeamMembersInput {
+  team_id: StringFieldUpdateOperationsInput
+  team_profile_pic: NullableStringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  conuntry_code: StringFieldUpdateOperationsInput
+  banned: BoolFieldUpdateOperationsInput
+  github_link: StringFieldUpdateOperationsInput
+  twitter_link: StringFieldUpdateOperationsInput
+  facebook_link: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input TeamMembersUpdateWithWhereUniqueWithoutUsersInput {
+  where: TeamMembersWhereUniqueInput!
+  data: TeamMembersUpdateWithoutUsersInput!
+}
+
+input TeamMembersUpdateManyWithWhereWithoutUsersInput {
+  where: TeamMembersScalarWhereInput!
+  data: TeamMembersUpdateManyMutationInput!
+}
+
+input TeamMembersScalarWhereInput {
+  AND: [TeamMembersScalarWhereInput!]
+  OR: [TeamMembersScalarWhereInput!]
+  NOT: [TeamMembersScalarWhereInput!]
+  user_id: StringFilter
+  team_id: StringFilter
+  type: StringFilter
+  status: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input TeamMembersUpdateManyMutationInput {
+  type: StringFieldUpdateOperationsInput
+  status: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserTutorialsUpdateManyWithoutUsersInput {
+  create: [UserTutorialsCreateWithoutUsersInput!]
+  connectOrCreate: [UserTutorialsCreateOrConnectWithoutUsersInput!]
+  upsert: [UserTutorialsUpsertWithWhereUniqueWithoutUsersInput!]
+  createMany: UserTutorialsCreateManyUsersInputEnvelope
+  set: [UserTutorialsWhereUniqueInput!]
+  disconnect: [UserTutorialsWhereUniqueInput!]
+  delete: [UserTutorialsWhereUniqueInput!]
+  connect: [UserTutorialsWhereUniqueInput!]
+  update: [UserTutorialsUpdateWithWhereUniqueWithoutUsersInput!]
+  updateMany: [UserTutorialsUpdateManyWithWhereWithoutUsersInput!]
+  deleteMany: [UserTutorialsScalarWhereInput!]
+}
+
+input UserTutorialsUpsertWithWhereUniqueWithoutUsersInput {
+  where: UserTutorialsWhereUniqueInput!
+  update: UserTutorialsUpdateWithoutUsersInput!
+  create: UserTutorialsCreateWithoutUsersInput!
+}
+
+input UserTutorialsUpdateWithoutUsersInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  tutorialChapterDatas: TutorialChapterDatasUpdateOneRequiredWithoutUserTutorialsInput
+}
+
+input TutorialChapterDatasUpdateOneRequiredWithoutUserTutorialsInput {
+  create: TutorialChapterDatasCreateWithoutUserTutorialsInput
+  connectOrCreate: TutorialChapterDatasCreateOrConnectWithoutUserTutorialsInput
+  upsert: TutorialChapterDatasUpsertWithoutUserTutorialsInput
+  connect: TutorialChapterDatasWhereUniqueInput
+  update: TutorialChapterDatasUpdateWithoutUserTutorialsInput
+}
+
+input TutorialChapterDatasUpsertWithoutUserTutorialsInput {
+  update: TutorialChapterDatasUpdateWithoutUserTutorialsInput!
+  create: TutorialChapterDatasCreateWithoutUserTutorialsInput!
+}
+
+input TutorialChapterDatasUpdateWithoutUserTutorialsInput {
+  chapter_id: StringFieldUpdateOperationsInput
+  chapter_name: StringFieldUpdateOperationsInput
+  video_link: StringFieldUpdateOperationsInput
+  flag_link: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  tutorialContents: TutorialContentsUpdateOneRequiredWithoutTutorialChapterDatasInput
+}
+
+input TutorialContentsUpdateOneRequiredWithoutTutorialChapterDatasInput {
+  create: TutorialContentsCreateWithoutTutorialChapterDatasInput
+  connectOrCreate: TutorialContentsCreateOrConnectWithoutTutorialChapterDatasInput
+  upsert: TutorialContentsUpsertWithoutTutorialChapterDatasInput
+  connect: TutorialContentsWhereUniqueInput
+  update: TutorialContentsUpdateWithoutTutorialChapterDatasInput
+}
+
+input TutorialContentsUpsertWithoutTutorialChapterDatasInput {
+  update: TutorialContentsUpdateWithoutTutorialChapterDatasInput!
+  create: TutorialContentsCreateWithoutTutorialChapterDatasInput!
+}
+
+input TutorialContentsUpdateWithoutTutorialChapterDatasInput {
+  tutorial_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserTutorialsUpdateWithWhereUniqueWithoutUsersInput {
+  where: UserTutorialsWhereUniqueInput!
+  data: UserTutorialsUpdateWithoutUsersInput!
+}
+
+input UserTutorialsUpdateManyWithWhereWithoutUsersInput {
+  where: UserTutorialsScalarWhereInput!
+  data: UserTutorialsUpdateManyMutationInput!
+}
+
+input UserTutorialsScalarWhereInput {
+  AND: [UserTutorialsScalarWhereInput!]
+  OR: [UserTutorialsScalarWhereInput!]
+  NOT: [UserTutorialsScalarWhereInput!]
+  user_id: StringFilter
+  chapter_id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input UserTutorialsUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ChallengesUpdateOneRequiredWithoutUserScoresInput {
+  create: ChallengesCreateWithoutUserScoresInput
+  connectOrCreate: ChallengesCreateOrConnectWithoutUserScoresInput
+  upsert: ChallengesUpsertWithoutUserScoresInput
+  connect: ChallengesWhereUniqueInput
+  update: ChallengesUpdateWithoutUserScoresInput
+}
+
+input ChallengesUpsertWithoutUserScoresInput {
+  update: ChallengesUpdateWithoutUserScoresInput!
+  create: ChallengesCreateWithoutUserScoresInput!
+}
+
+input ChallengesUpdateWithoutUserScoresInput {
+  challenge_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  scorce: IntFieldUpdateOperationsInput
+  max_time: IntFieldUpdateOperationsInput
+  max_cost: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  levels: LevelsUpdateOneRequiredWithoutChallengesInput
+  types: TypesUpdateOneRequiredWithoutChallengesInput
+  categories: CategoriesUpdateOneRequiredWithoutChallengesInput
+  badges: BadgesUpdateOneRequiredWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsUpdateManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsUpdateManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsUpdateManyWithoutChallengesInput
+}
+
+input TypesUpdateOneRequiredWithoutChallengesInput {
+  create: TypesCreateWithoutChallengesInput
+  connectOrCreate: TypesCreateOrConnectWithoutChallengesInput
+  upsert: TypesUpsertWithoutChallengesInput
+  connect: TypesWhereUniqueInput
+  update: TypesUpdateWithoutChallengesInput
+}
+
+input TypesUpsertWithoutChallengesInput {
+  update: TypesUpdateWithoutChallengesInput!
+  create: TypesCreateWithoutChallengesInput!
+}
+
+input TypesUpdateWithoutChallengesInput {
+  types_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userScores: UserScoresUpdateManyWithoutTypesInput
+}
+
+input UserScoresUpdateManyWithoutTypesInput {
+  create: [UserScoresCreateWithoutTypesInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutTypesInput!]
+  upsert: [UserScoresUpsertWithWhereUniqueWithoutTypesInput!]
+  createMany: UserScoresCreateManyTypesInputEnvelope
+  set: [UserScoresWhereUniqueInput!]
+  disconnect: [UserScoresWhereUniqueInput!]
+  delete: [UserScoresWhereUniqueInput!]
+  connect: [UserScoresWhereUniqueInput!]
+  update: [UserScoresUpdateWithWhereUniqueWithoutTypesInput!]
+  updateMany: [UserScoresUpdateManyWithWhereWithoutTypesInput!]
+  deleteMany: [UserScoresScalarWhereInput!]
+}
+
+input UserScoresUpsertWithWhereUniqueWithoutTypesInput {
+  where: UserScoresWhereUniqueInput!
+  update: UserScoresUpdateWithoutTypesInput!
+  create: UserScoresCreateWithoutTypesInput!
+}
+
+input UserScoresUpdateWithoutTypesInput {
+  base_score: IntFieldUpdateOperationsInput
+  time_score: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  users: UsersUpdateOneRequiredWithoutUserScoresInput
+  challenges: ChallengesUpdateOneRequiredWithoutUserScoresInput
+  levels: LevelsUpdateOneRequiredWithoutUserScoresInput
+  categories: CategoriesUpdateOneRequiredWithoutUserScoresInput
+}
+
+input LevelsUpdateOneRequiredWithoutUserScoresInput {
+  create: LevelsCreateWithoutUserScoresInput
+  connectOrCreate: LevelsCreateOrConnectWithoutUserScoresInput
+  upsert: LevelsUpsertWithoutUserScoresInput
+  connect: LevelsWhereUniqueInput
+  update: LevelsUpdateWithoutUserScoresInput
+}
+
+input LevelsUpsertWithoutUserScoresInput {
+  update: LevelsUpdateWithoutUserScoresInput!
+  create: LevelsCreateWithoutUserScoresInput!
+}
+
+input LevelsUpdateWithoutUserScoresInput {
+  level_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  challenges: ChallengesUpdateManyWithoutLevelsInput
+}
+
+input ChallengesUpdateManyWithoutLevelsInput {
+  create: [ChallengesCreateWithoutLevelsInput!]
+  connectOrCreate: [ChallengesCreateOrConnectWithoutLevelsInput!]
+  upsert: [ChallengesUpsertWithWhereUniqueWithoutLevelsInput!]
+  createMany: ChallengesCreateManyLevelsInputEnvelope
+  set: [ChallengesWhereUniqueInput!]
+  disconnect: [ChallengesWhereUniqueInput!]
+  delete: [ChallengesWhereUniqueInput!]
+  connect: [ChallengesWhereUniqueInput!]
+  update: [ChallengesUpdateWithWhereUniqueWithoutLevelsInput!]
+  updateMany: [ChallengesUpdateManyWithWhereWithoutLevelsInput!]
+  deleteMany: [ChallengesScalarWhereInput!]
+}
+
+input ChallengesUpsertWithWhereUniqueWithoutLevelsInput {
+  where: ChallengesWhereUniqueInput!
+  update: ChallengesUpdateWithoutLevelsInput!
+  create: ChallengesCreateWithoutLevelsInput!
+}
+
+input ChallengesUpdateWithoutLevelsInput {
+  challenge_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  scorce: IntFieldUpdateOperationsInput
+  max_time: IntFieldUpdateOperationsInput
+  max_cost: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  types: TypesUpdateOneRequiredWithoutChallengesInput
+  categories: CategoriesUpdateOneRequiredWithoutChallengesInput
+  badges: BadgesUpdateOneRequiredWithoutChallengesInput
+  userScores: UserScoresUpdateManyWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsUpdateManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsUpdateManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsUpdateManyWithoutChallengesInput
+}
+
+input CategoriesUpdateOneRequiredWithoutChallengesInput {
+  create: CategoriesCreateWithoutChallengesInput
+  connectOrCreate: CategoriesCreateOrConnectWithoutChallengesInput
+  upsert: CategoriesUpsertWithoutChallengesInput
+  connect: CategoriesWhereUniqueInput
+  update: CategoriesUpdateWithoutChallengesInput
+}
+
+input CategoriesUpsertWithoutChallengesInput {
+  update: CategoriesUpdateWithoutChallengesInput!
+  create: CategoriesCreateWithoutChallengesInput!
+}
+
+input CategoriesUpdateWithoutChallengesInput {
+  categories_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userScores: UserScoresUpdateManyWithoutCategoriesInput
+}
+
+input UserScoresUpdateManyWithoutCategoriesInput {
+  create: [UserScoresCreateWithoutCategoriesInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutCategoriesInput!]
+  upsert: [UserScoresUpsertWithWhereUniqueWithoutCategoriesInput!]
+  createMany: UserScoresCreateManyCategoriesInputEnvelope
+  set: [UserScoresWhereUniqueInput!]
+  disconnect: [UserScoresWhereUniqueInput!]
+  delete: [UserScoresWhereUniqueInput!]
+  connect: [UserScoresWhereUniqueInput!]
+  update: [UserScoresUpdateWithWhereUniqueWithoutCategoriesInput!]
+  updateMany: [UserScoresUpdateManyWithWhereWithoutCategoriesInput!]
+  deleteMany: [UserScoresScalarWhereInput!]
+}
+
+input UserScoresUpsertWithWhereUniqueWithoutCategoriesInput {
+  where: UserScoresWhereUniqueInput!
+  update: UserScoresUpdateWithoutCategoriesInput!
+  create: UserScoresCreateWithoutCategoriesInput!
+}
+
+input UserScoresUpdateWithoutCategoriesInput {
+  base_score: IntFieldUpdateOperationsInput
+  time_score: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  users: UsersUpdateOneRequiredWithoutUserScoresInput
+  challenges: ChallengesUpdateOneRequiredWithoutUserScoresInput
+  levels: LevelsUpdateOneRequiredWithoutUserScoresInput
+  types: TypesUpdateOneRequiredWithoutUserScoresInput
+}
+
+input TypesUpdateOneRequiredWithoutUserScoresInput {
+  create: TypesCreateWithoutUserScoresInput
+  connectOrCreate: TypesCreateOrConnectWithoutUserScoresInput
+  upsert: TypesUpsertWithoutUserScoresInput
+  connect: TypesWhereUniqueInput
+  update: TypesUpdateWithoutUserScoresInput
+}
+
+input TypesUpsertWithoutUserScoresInput {
+  update: TypesUpdateWithoutUserScoresInput!
+  create: TypesCreateWithoutUserScoresInput!
+}
+
+input TypesUpdateWithoutUserScoresInput {
+  types_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  challenges: ChallengesUpdateManyWithoutTypesInput
+}
+
+input ChallengesUpdateManyWithoutTypesInput {
+  create: [ChallengesCreateWithoutTypesInput!]
+  connectOrCreate: [ChallengesCreateOrConnectWithoutTypesInput!]
+  upsert: [ChallengesUpsertWithWhereUniqueWithoutTypesInput!]
+  createMany: ChallengesCreateManyTypesInputEnvelope
+  set: [ChallengesWhereUniqueInput!]
+  disconnect: [ChallengesWhereUniqueInput!]
+  delete: [ChallengesWhereUniqueInput!]
+  connect: [ChallengesWhereUniqueInput!]
+  update: [ChallengesUpdateWithWhereUniqueWithoutTypesInput!]
+  updateMany: [ChallengesUpdateManyWithWhereWithoutTypesInput!]
+  deleteMany: [ChallengesScalarWhereInput!]
+}
+
+input ChallengesUpsertWithWhereUniqueWithoutTypesInput {
+  where: ChallengesWhereUniqueInput!
+  update: ChallengesUpdateWithoutTypesInput!
+  create: ChallengesCreateWithoutTypesInput!
+}
+
+input ChallengesUpdateWithoutTypesInput {
+  challenge_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  scorce: IntFieldUpdateOperationsInput
+  max_time: IntFieldUpdateOperationsInput
+  max_cost: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  levels: LevelsUpdateOneRequiredWithoutChallengesInput
+  categories: CategoriesUpdateOneRequiredWithoutChallengesInput
+  badges: BadgesUpdateOneRequiredWithoutChallengesInput
+  userScores: UserScoresUpdateManyWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsUpdateManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsUpdateManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsUpdateManyWithoutChallengesInput
+}
+
+input BadgesUpdateOneRequiredWithoutChallengesInput {
+  create: BadgesCreateWithoutChallengesInput
+  connectOrCreate: BadgesCreateOrConnectWithoutChallengesInput
+  upsert: BadgesUpsertWithoutChallengesInput
+  connect: BadgesWhereUniqueInput
+  update: BadgesUpdateWithoutChallengesInput
+}
+
+input BadgesUpsertWithoutChallengesInput {
+  update: BadgesUpdateWithoutChallengesInput!
+  create: BadgesCreateWithoutChallengesInput!
+}
+
+input BadgesUpdateWithoutChallengesInput {
+  badge_id: StringFieldUpdateOperationsInput
+  condition: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  link: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  status: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userBadges: UserBadgesUpdateManyWithoutBadgesInput
+  events: EventsUpdateManyWithoutBadgesInput
+}
+
+input UserBadgesUpdateManyWithoutBadgesInput {
+  create: [UserBadgesCreateWithoutBadgesInput!]
+  connectOrCreate: [UserBadgesCreateOrConnectWithoutBadgesInput!]
+  upsert: [UserBadgesUpsertWithWhereUniqueWithoutBadgesInput!]
+  createMany: UserBadgesCreateManyBadgesInputEnvelope
+  set: [UserBadgesWhereUniqueInput!]
+  disconnect: [UserBadgesWhereUniqueInput!]
+  delete: [UserBadgesWhereUniqueInput!]
+  connect: [UserBadgesWhereUniqueInput!]
+  update: [UserBadgesUpdateWithWhereUniqueWithoutBadgesInput!]
+  updateMany: [UserBadgesUpdateManyWithWhereWithoutBadgesInput!]
+  deleteMany: [UserBadgesScalarWhereInput!]
+}
+
+input UserBadgesUpsertWithWhereUniqueWithoutBadgesInput {
+  where: UserBadgesWhereUniqueInput!
+  update: UserBadgesUpdateWithoutBadgesInput!
+  create: UserBadgesCreateWithoutBadgesInput!
+}
+
+input UserBadgesUpdateWithoutBadgesInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  users: UsersUpdateOneRequiredWithoutUserBadgesInput
+}
+
+input UsersUpdateOneRequiredWithoutUserBadgesInput {
+  create: UsersCreateWithoutUserBadgesInput
+  connectOrCreate: UsersCreateOrConnectWithoutUserBadgesInput
+  upsert: UsersUpsertWithoutUserBadgesInput
+  connect: UsersWhereUniqueInput
+  update: UsersUpdateWithoutUserBadgesInput
+}
+
+input UsersUpsertWithoutUserBadgesInput {
+  update: UsersUpdateWithoutUserBadgesInput!
+  create: UsersCreateWithoutUserBadgesInput!
+}
+
+input UsersUpdateWithoutUserBadgesInput {
+  user_id: StringFieldUpdateOperationsInput
+  profile_pic: NullableStringFieldUpdateOperationsInput
+  total_score: FloatFieldUpdateOperationsInput
+  type: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  conuntry_code: StringFieldUpdateOperationsInput
+  banned: BoolFieldUpdateOperationsInput
+  verified: BoolFieldUpdateOperationsInput
+  quick_start_status: BoolFieldUpdateOperationsInput
+  profile_description: StringFieldUpdateOperationsInput
+  github_link: StringFieldUpdateOperationsInput
+  twitter_link: StringFieldUpdateOperationsInput
+  facebook_link: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userLoggings: UserLoggingsUpdateManyWithoutUsersInput
+  teamMembers: TeamMembersUpdateManyWithoutUsersInput
+  userTutorials: UserTutorialsUpdateManyWithoutUsersInput
+  userScores: UserScoresUpdateManyWithoutUsersInput
+}
+
+input UserScoresUpdateManyWithoutUsersInput {
+  create: [UserScoresCreateWithoutUsersInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutUsersInput!]
+  upsert: [UserScoresUpsertWithWhereUniqueWithoutUsersInput!]
+  createMany: UserScoresCreateManyUsersInputEnvelope
+  set: [UserScoresWhereUniqueInput!]
+  disconnect: [UserScoresWhereUniqueInput!]
+  delete: [UserScoresWhereUniqueInput!]
+  connect: [UserScoresWhereUniqueInput!]
+  update: [UserScoresUpdateWithWhereUniqueWithoutUsersInput!]
+  updateMany: [UserScoresUpdateManyWithWhereWithoutUsersInput!]
+  deleteMany: [UserScoresScalarWhereInput!]
+}
+
+input UserScoresUpsertWithWhereUniqueWithoutUsersInput {
+  where: UserScoresWhereUniqueInput!
+  update: UserScoresUpdateWithoutUsersInput!
+  create: UserScoresCreateWithoutUsersInput!
+}
+
+input UserScoresUpdateWithoutUsersInput {
+  base_score: IntFieldUpdateOperationsInput
+  time_score: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  challenges: ChallengesUpdateOneRequiredWithoutUserScoresInput
+  levels: LevelsUpdateOneRequiredWithoutUserScoresInput
+  types: TypesUpdateOneRequiredWithoutUserScoresInput
+  categories: CategoriesUpdateOneRequiredWithoutUserScoresInput
+}
+
+input CategoriesUpdateOneRequiredWithoutUserScoresInput {
+  create: CategoriesCreateWithoutUserScoresInput
+  connectOrCreate: CategoriesCreateOrConnectWithoutUserScoresInput
+  upsert: CategoriesUpsertWithoutUserScoresInput
+  connect: CategoriesWhereUniqueInput
+  update: CategoriesUpdateWithoutUserScoresInput
+}
+
+input CategoriesUpsertWithoutUserScoresInput {
+  update: CategoriesUpdateWithoutUserScoresInput!
+  create: CategoriesCreateWithoutUserScoresInput!
+}
+
+input CategoriesUpdateWithoutUserScoresInput {
+  categories_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  challenges: ChallengesUpdateManyWithoutCategoriesInput
+}
+
+input ChallengesUpdateManyWithoutCategoriesInput {
+  create: [ChallengesCreateWithoutCategoriesInput!]
+  connectOrCreate: [ChallengesCreateOrConnectWithoutCategoriesInput!]
+  upsert: [ChallengesUpsertWithWhereUniqueWithoutCategoriesInput!]
+  createMany: ChallengesCreateManyCategoriesInputEnvelope
+  set: [ChallengesWhereUniqueInput!]
+  disconnect: [ChallengesWhereUniqueInput!]
+  delete: [ChallengesWhereUniqueInput!]
+  connect: [ChallengesWhereUniqueInput!]
+  update: [ChallengesUpdateWithWhereUniqueWithoutCategoriesInput!]
+  updateMany: [ChallengesUpdateManyWithWhereWithoutCategoriesInput!]
+  deleteMany: [ChallengesScalarWhereInput!]
+}
+
+input ChallengesUpsertWithWhereUniqueWithoutCategoriesInput {
+  where: ChallengesWhereUniqueInput!
+  update: ChallengesUpdateWithoutCategoriesInput!
+  create: ChallengesCreateWithoutCategoriesInput!
+}
+
+input ChallengesUpdateWithoutCategoriesInput {
+  challenge_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  scorce: IntFieldUpdateOperationsInput
+  max_time: IntFieldUpdateOperationsInput
+  max_cost: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  levels: LevelsUpdateOneRequiredWithoutChallengesInput
+  types: TypesUpdateOneRequiredWithoutChallengesInput
+  badges: BadgesUpdateOneRequiredWithoutChallengesInput
+  userScores: UserScoresUpdateManyWithoutChallengesInput
+  multipleQuestions: MultipleQuestionsUpdateManyWithoutChallengesInput
+  shortAnswerQuestions: ShortAnswerQuestionsUpdateManyWithoutChallengesInput
+  flagQuestions: FlagQuestionsUpdateManyWithoutChallengesInput
+}
+
+input UserScoresUpdateManyWithoutChallengesInput {
+  create: [UserScoresCreateWithoutChallengesInput!]
+  connectOrCreate: [UserScoresCreateOrConnectWithoutChallengesInput!]
+  upsert: [UserScoresUpsertWithWhereUniqueWithoutChallengesInput!]
+  createMany: UserScoresCreateManyChallengesInputEnvelope
+  set: [UserScoresWhereUniqueInput!]
+  disconnect: [UserScoresWhereUniqueInput!]
+  delete: [UserScoresWhereUniqueInput!]
+  connect: [UserScoresWhereUniqueInput!]
+  update: [UserScoresUpdateWithWhereUniqueWithoutChallengesInput!]
+  updateMany: [UserScoresUpdateManyWithWhereWithoutChallengesInput!]
+  deleteMany: [UserScoresScalarWhereInput!]
+}
+
+input UserScoresUpsertWithWhereUniqueWithoutChallengesInput {
+  where: UserScoresWhereUniqueInput!
+  update: UserScoresUpdateWithoutChallengesInput!
+  create: UserScoresCreateWithoutChallengesInput!
+}
+
+input UserScoresUpdateWithoutChallengesInput {
+  base_score: IntFieldUpdateOperationsInput
+  time_score: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  users: UsersUpdateOneRequiredWithoutUserScoresInput
+  levels: LevelsUpdateOneRequiredWithoutUserScoresInput
+  types: TypesUpdateOneRequiredWithoutUserScoresInput
+  categories: CategoriesUpdateOneRequiredWithoutUserScoresInput
+}
+
+input UserScoresUpdateWithWhereUniqueWithoutChallengesInput {
+  where: UserScoresWhereUniqueInput!
+  data: UserScoresUpdateWithoutChallengesInput!
+}
+
+input UserScoresUpdateManyWithWhereWithoutChallengesInput {
+  where: UserScoresScalarWhereInput!
+  data: UserScoresUpdateManyMutationInput!
+}
+
+input UserScoresScalarWhereInput {
+  AND: [UserScoresScalarWhereInput!]
+  OR: [UserScoresScalarWhereInput!]
+  NOT: [UserScoresScalarWhereInput!]
+  user_id: StringFilter
+  challenge_id: StringFilter
+  base_score: IntFilter
+  time_score: FloatFilter
+  level_id: StringFilter
+  types_id: StringFilter
+  categories_id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input UserScoresUpdateManyMutationInput {
+  base_score: IntFieldUpdateOperationsInput
+  time_score: FloatFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input MultipleQuestionsUpdateManyWithoutChallengesInput {
+  create: [MultipleQuestionsCreateWithoutChallengesInput!]
+  connectOrCreate: [MultipleQuestionsCreateOrConnectWithoutChallengesInput!]
+  upsert: [MultipleQuestionsUpsertWithWhereUniqueWithoutChallengesInput!]
+  createMany: MultipleQuestionsCreateManyChallengesInputEnvelope
+  set: [MultipleQuestionsWhereUniqueInput!]
+  disconnect: [MultipleQuestionsWhereUniqueInput!]
+  delete: [MultipleQuestionsWhereUniqueInput!]
+  connect: [MultipleQuestionsWhereUniqueInput!]
+  update: [MultipleQuestionsUpdateWithWhereUniqueWithoutChallengesInput!]
+  updateMany: [MultipleQuestionsUpdateManyWithWhereWithoutChallengesInput!]
+  deleteMany: [MultipleQuestionsScalarWhereInput!]
+}
+
+input MultipleQuestionsUpsertWithWhereUniqueWithoutChallengesInput {
+  where: MultipleQuestionsWhereUniqueInput!
+  update: MultipleQuestionsUpdateWithoutChallengesInput!
+  create: MultipleQuestionsCreateWithoutChallengesInput!
+}
+
+input MultipleQuestionsUpdateWithoutChallengesInput {
+  multiple_question_id: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  hint: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  multipleChoiceQuestion: MultipleChoiceQuestionUpdateManyWithoutMultipleQuestionsInput
+}
+
+input MultipleChoiceQuestionUpdateManyWithoutMultipleQuestionsInput {
+  create: [MultipleChoiceQuestionCreateWithoutMultipleQuestionsInput!]
+  connectOrCreate: [MultipleChoiceQuestionCreateOrConnectWithoutMultipleQuestionsInput!]
+  upsert: [MultipleChoiceQuestionUpsertWithWhereUniqueWithoutMultipleQuestionsInput!]
+  createMany: MultipleChoiceQuestionCreateManyMultipleQuestionsInputEnvelope
+  set: [MultipleChoiceQuestionWhereUniqueInput!]
+  disconnect: [MultipleChoiceQuestionWhereUniqueInput!]
+  delete: [MultipleChoiceQuestionWhereUniqueInput!]
+  connect: [MultipleChoiceQuestionWhereUniqueInput!]
+  update: [MultipleChoiceQuestionUpdateWithWhereUniqueWithoutMultipleQuestionsInput!]
+  updateMany: [MultipleChoiceQuestionUpdateManyWithWhereWithoutMultipleQuestionsInput!]
+  deleteMany: [MultipleChoiceQuestionScalarWhereInput!]
+}
+
+input MultipleChoiceQuestionUpsertWithWhereUniqueWithoutMultipleQuestionsInput {
+  where: MultipleChoiceQuestionWhereUniqueInput!
+  update: MultipleChoiceQuestionUpdateWithoutMultipleQuestionsInput!
+  create: MultipleChoiceQuestionCreateWithoutMultipleQuestionsInput!
+}
+
+input MultipleChoiceQuestionUpdateWithoutMultipleQuestionsInput {
+  multiple_choice_question_id: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  correct_flag: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input MultipleChoiceQuestionUpdateWithWhereUniqueWithoutMultipleQuestionsInput {
+  where: MultipleChoiceQuestionWhereUniqueInput!
+  data: MultipleChoiceQuestionUpdateWithoutMultipleQuestionsInput!
+}
+
+input MultipleChoiceQuestionUpdateManyWithWhereWithoutMultipleQuestionsInput {
+  where: MultipleChoiceQuestionScalarWhereInput!
+  data: MultipleChoiceQuestionUpdateManyMutationInput!
+}
+
+input MultipleChoiceQuestionScalarWhereInput {
+  AND: [MultipleChoiceQuestionScalarWhereInput!]
+  OR: [MultipleChoiceQuestionScalarWhereInput!]
+  NOT: [MultipleChoiceQuestionScalarWhereInput!]
+  multiple_choice_question_id: StringFilter
+  multiple_question_id: StringFilter
+  answer: StringFilter
+  correct_flag: BoolFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input MultipleChoiceQuestionUpdateManyMutationInput {
+  multiple_choice_question_id: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  correct_flag: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input MultipleQuestionsUpdateWithWhereUniqueWithoutChallengesInput {
+  where: MultipleQuestionsWhereUniqueInput!
+  data: MultipleQuestionsUpdateWithoutChallengesInput!
+}
+
+input MultipleQuestionsUpdateManyWithWhereWithoutChallengesInput {
+  where: MultipleQuestionsScalarWhereInput!
+  data: MultipleQuestionsUpdateManyMutationInput!
+}
+
+input MultipleQuestionsScalarWhereInput {
+  AND: [MultipleQuestionsScalarWhereInput!]
+  OR: [MultipleQuestionsScalarWhereInput!]
+  NOT: [MultipleQuestionsScalarWhereInput!]
+  multiple_question_id: StringFilter
+  challenge_id: StringFilter
+  question: StringFilter
+  hint: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input MultipleQuestionsUpdateManyMutationInput {
+  multiple_question_id: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  hint: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ShortAnswerQuestionsUpdateManyWithoutChallengesInput {
+  create: [ShortAnswerQuestionsCreateWithoutChallengesInput!]
+  connectOrCreate: [ShortAnswerQuestionsCreateOrConnectWithoutChallengesInput!]
+  upsert: [ShortAnswerQuestionsUpsertWithWhereUniqueWithoutChallengesInput!]
+  createMany: ShortAnswerQuestionsCreateManyChallengesInputEnvelope
+  set: [ShortAnswerQuestionsWhereUniqueInput!]
+  disconnect: [ShortAnswerQuestionsWhereUniqueInput!]
+  delete: [ShortAnswerQuestionsWhereUniqueInput!]
+  connect: [ShortAnswerQuestionsWhereUniqueInput!]
+  update: [ShortAnswerQuestionsUpdateWithWhereUniqueWithoutChallengesInput!]
+  updateMany: [ShortAnswerQuestionsUpdateManyWithWhereWithoutChallengesInput!]
+  deleteMany: [ShortAnswerQuestionsScalarWhereInput!]
+}
+
+input ShortAnswerQuestionsUpsertWithWhereUniqueWithoutChallengesInput {
+  where: ShortAnswerQuestionsWhereUniqueInput!
+  update: ShortAnswerQuestionsUpdateWithoutChallengesInput!
+  create: ShortAnswerQuestionsCreateWithoutChallengesInput!
+}
+
+input ShortAnswerQuestionsUpdateWithoutChallengesInput {
+  short_answer_question_id: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  hint: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ShortAnswerQuestionsUpdateWithWhereUniqueWithoutChallengesInput {
+  where: ShortAnswerQuestionsWhereUniqueInput!
+  data: ShortAnswerQuestionsUpdateWithoutChallengesInput!
+}
+
+input ShortAnswerQuestionsUpdateManyWithWhereWithoutChallengesInput {
+  where: ShortAnswerQuestionsScalarWhereInput!
+  data: ShortAnswerQuestionsUpdateManyMutationInput!
+}
+
+input ShortAnswerQuestionsScalarWhereInput {
+  AND: [ShortAnswerQuestionsScalarWhereInput!]
+  OR: [ShortAnswerQuestionsScalarWhereInput!]
+  NOT: [ShortAnswerQuestionsScalarWhereInput!]
+  short_answer_question_id: StringFilter
+  challenge_id: StringFilter
+  question: StringFilter
+  hint: StringFilter
+  answer: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input ShortAnswerQuestionsUpdateManyMutationInput {
+  short_answer_question_id: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  hint: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input FlagQuestionsUpdateManyWithoutChallengesInput {
+  create: [FlagQuestionsCreateWithoutChallengesInput!]
+  connectOrCreate: [FlagQuestionsCreateOrConnectWithoutChallengesInput!]
+  upsert: [FlagQuestionsUpsertWithWhereUniqueWithoutChallengesInput!]
+  createMany: FlagQuestionsCreateManyChallengesInputEnvelope
+  set: [FlagQuestionsWhereUniqueInput!]
+  disconnect: [FlagQuestionsWhereUniqueInput!]
+  delete: [FlagQuestionsWhereUniqueInput!]
+  connect: [FlagQuestionsWhereUniqueInput!]
+  update: [FlagQuestionsUpdateWithWhereUniqueWithoutChallengesInput!]
+  updateMany: [FlagQuestionsUpdateManyWithWhereWithoutChallengesInput!]
+  deleteMany: [FlagQuestionsScalarWhereInput!]
+}
+
+input FlagQuestionsUpsertWithWhereUniqueWithoutChallengesInput {
+  where: FlagQuestionsWhereUniqueInput!
+  update: FlagQuestionsUpdateWithoutChallengesInput!
+  create: FlagQuestionsCreateWithoutChallengesInput!
+}
+
+input FlagQuestionsUpdateWithoutChallengesInput {
+  flag_question_id: StringFieldUpdateOperationsInput
+  video_link: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input FlagQuestionsUpdateWithWhereUniqueWithoutChallengesInput {
+  where: FlagQuestionsWhereUniqueInput!
+  data: FlagQuestionsUpdateWithoutChallengesInput!
+}
+
+input FlagQuestionsUpdateManyWithWhereWithoutChallengesInput {
+  where: FlagQuestionsScalarWhereInput!
+  data: FlagQuestionsUpdateManyMutationInput!
+}
+
+input FlagQuestionsScalarWhereInput {
+  AND: [FlagQuestionsScalarWhereInput!]
+  OR: [FlagQuestionsScalarWhereInput!]
+  NOT: [FlagQuestionsScalarWhereInput!]
+  flag_question_id: StringFilter
+  challenge_id: StringFilter
+  video_link: StringFilter
+  description: StringFilter
+  question: StringFilter
+  answer: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input FlagQuestionsUpdateManyMutationInput {
+  flag_question_id: StringFieldUpdateOperationsInput
+  video_link: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  answer: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ChallengesUpdateWithWhereUniqueWithoutCategoriesInput {
+  where: ChallengesWhereUniqueInput!
+  data: ChallengesUpdateWithoutCategoriesInput!
+}
+
+input ChallengesUpdateManyWithWhereWithoutCategoriesInput {
+  where: ChallengesScalarWhereInput!
+  data: ChallengesUpdateManyMutationInput!
+}
+
+input ChallengesScalarWhereInput {
+  AND: [ChallengesScalarWhereInput!]
+  OR: [ChallengesScalarWhereInput!]
+  NOT: [ChallengesScalarWhereInput!]
+  challenge_id: StringFilter
+  name: StringFilter
+  question: StringFilter
+  description: StringFilter
+  level_id: StringFilter
+  types_id: StringFilter
+  categories_id: StringFilter
+  award_badge: StringFilter
+  scorce: IntFilter
+  max_time: IntFilter
+  max_cost: IntFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input ChallengesUpdateManyMutationInput {
+  challenge_id: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  question: StringFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  scorce: IntFieldUpdateOperationsInput
+  max_time: IntFieldUpdateOperationsInput
+  max_cost: IntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input UserScoresUpdateWithWhereUniqueWithoutUsersInput {
+  where: UserScoresWhereUniqueInput!
+  data: UserScoresUpdateWithoutUsersInput!
+}
+
+input UserScoresUpdateManyWithWhereWithoutUsersInput {
+  where: UserScoresScalarWhereInput!
+  data: UserScoresUpdateManyMutationInput!
+}
+
+input UserBadgesUpdateWithWhereUniqueWithoutBadgesInput {
+  where: UserBadgesWhereUniqueInput!
+  data: UserBadgesUpdateWithoutBadgesInput!
+}
+
+input UserBadgesUpdateManyWithWhereWithoutBadgesInput {
+  where: UserBadgesScalarWhereInput!
+  data: UserBadgesUpdateManyMutationInput!
+}
+
+input UserBadgesScalarWhereInput {
+  AND: [UserBadgesScalarWhereInput!]
+  OR: [UserBadgesScalarWhereInput!]
+  NOT: [UserBadgesScalarWhereInput!]
+  user_id: StringFilter
+  badge_id: StringFilter
+  createdAt: DateTimeFilter
+  updatedAt: DateTimeFilter
+}
+
+input UserBadgesUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ChallengesUpdateWithWhereUniqueWithoutTypesInput {
+  where: ChallengesWhereUniqueInput!
+  data: ChallengesUpdateWithoutTypesInput!
+}
+
+input ChallengesUpdateManyWithWhereWithoutTypesInput {
+  where: ChallengesScalarWhereInput!
+  data: ChallengesUpdateManyMutationInput!
+}
+
+input UserScoresUpdateWithWhereUniqueWithoutCategoriesInput {
+  where: UserScoresWhereUniqueInput!
+  data: UserScoresUpdateWithoutCategoriesInput!
+}
+
+input UserScoresUpdateManyWithWhereWithoutCategoriesInput {
+  where: UserScoresScalarWhereInput!
+  data: UserScoresUpdateManyMutationInput!
+}
+
+input ChallengesUpdateWithWhereUniqueWithoutLevelsInput {
+  where: ChallengesWhereUniqueInput!
+  data: ChallengesUpdateWithoutLevelsInput!
+}
+
+input ChallengesUpdateManyWithWhereWithoutLevelsInput {
+  where: ChallengesScalarWhereInput!
+  data: ChallengesUpdateManyMutationInput!
+}
+
+input UserScoresUpdateWithWhereUniqueWithoutTypesInput {
+  where: UserScoresWhereUniqueInput!
+  data: UserScoresUpdateWithoutTypesInput!
+}
+
+input UserScoresUpdateManyWithWhereWithoutTypesInput {
+  where: UserScoresScalarWhereInput!
+  data: UserScoresUpdateManyMutationInput!
+}
+
+input UserScoresUpdateWithWhereUniqueWithoutLevelsInput {
+  where: UserScoresWhereUniqueInput!
+  data: UserScoresUpdateWithoutLevelsInput!
+}
+
+input UserScoresUpdateManyWithWhereWithoutLevelsInput {
+  where: UserScoresScalarWhereInput!
+  data: UserScoresUpdateManyMutationInput!
+}
+
+input ChallengesUpdateWithWhereUniqueWithoutBadgesInput {
+  where: ChallengesWhereUniqueInput!
+  data: ChallengesUpdateWithoutBadgesInput!
+}
+
+input ChallengesUpdateManyWithWhereWithoutBadgesInput {
+  where: ChallengesScalarWhereInput!
+  data: ChallengesUpdateManyMutationInput!
+}
+
+input UserBadgesUpdateWithWhereUniqueWithoutUsersInput {
+  where: UserBadgesWhereUniqueInput!
+  data: UserBadgesUpdateWithoutUsersInput!
+}
+
+input UserBadgesUpdateManyWithWhereWithoutUsersInput {
+  where: UserBadgesScalarWhereInput!
+  data: UserBadgesUpdateManyMutationInput!
+}
