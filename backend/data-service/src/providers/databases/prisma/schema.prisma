@@ -1,0 +1,296 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+//generator nestgraphql {
+//  provider = "node node_modules/prisma-nestjs-graphql"
+//  output = "../../models"
+//}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model Users {
+  user_id             String          @id @default(uuid())
+  user_invite_id      Int             @unique @default(autoincrement())
+  profile_pic         String?         @db.VarChar(32)
+  total_score         Float           @default(0)
+  type                String          @default("user") @db.VarChar(8)
+  name                String          @db.VarChar(16)
+  password            String          @db.VarChar(128)
+  email               String          @db.VarChar(64)
+  conuntry_code       String          @default("TH") @db.VarChar(8)
+  banned              Boolean         @default(false)
+  verified            Boolean         @default(false)
+  quick_start_status  Boolean         @default(false)
+  profile_description String          @default("") @db.VarChar(256)
+  github_link         String          @default("") @db.VarChar(256)
+  twitter_link        String          @default("") @db.VarChar(256)
+  facebook_link       String          @default("") @db.VarChar(256)
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+  userLoggings        UserLoggings[]
+  userBadges          UserBadges[]
+  teamMembers         TeamMembers[]
+  userTutorials       UserTutorials[]
+  userScores          UserScores[]
+
+  @@map("TBL_USERS")
+}
+
+model UserLoggings {
+  log_id    String   @id @default(uuid())
+  users     Users    @relation(fields: [user_id], references: [user_id], onDelete: NoAction)
+  user_id   String
+  action    String   @db.VarChar(64)
+  ip        String   @db.VarChar(32)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("TBL_USER_LOGGINGS")
+}
+
+model Teams {
+  team_id          String        @id @default(uuid())
+  team_profile_pic String?       @db.VarChar(32)
+  name             String        @db.VarChar(16)
+  conuntry_code    String        @default("TH") @db.VarChar(8)
+  banned           Boolean       @default(false)
+  github_link      String        @default("") @db.VarChar(256)
+  twitter_link     String        @default("") @db.VarChar(256)
+  facebook_link    String        @default("") @db.VarChar(256)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  teamMembers      TeamMembers[]
+
+  @@map("TBL_TEAMS")
+}
+
+model TeamMembers {
+  users     Users    @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  user_id   String   @id
+  teams     Teams    @relation(fields: [team_id], references: [team_id], onDelete: Cascade)
+  team_id   String
+  type      String   @default("member") @db.VarChar(8)
+  status    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("TBL_TEAM_MEMBERS")
+}
+
+model Badges {
+  badge_id    String       @id @default(uuid())
+  condition   String       @default("") @db.VarChar(32)
+  name        String       @default("") @db.VarChar(32)
+  link        String       @default("") @db.VarChar(256)
+  description String       @default("") @db.VarChar(256)
+  status      Boolean      @default(false)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  userBadges  UserBadges[]
+  events      Events[]
+  challenges  Challenges[]
+
+  @@map("TBL_BADGES")
+}
+
+model UserBadges {
+  users     Users    @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  user_id   String
+  badges    Badges   @relation(fields: [badge_id], references: [badge_id], onDelete: Cascade)
+  badge_id  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([badge_id, user_id])
+  @@map("TBL_USER_BADGES")
+}
+
+model TutorialContents {
+  tutorial_id          String                 @id @default(uuid())
+  name                 String                 @default("") @db.VarChar(128)
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  tutorialChapterDatas TutorialChapterDatas[]
+
+  @@map("TBL_TUTORIAL_CONTENTS")
+}
+
+model TutorialChapterDatas {
+  chapter_id       String           @id @default(uuid())
+  tutorialContents TutorialContents @relation(fields: [tutorial_id], references: [tutorial_id], onDelete: Cascade)
+  tutorial_id      String
+  chapter_name     String           @default("") @db.VarChar(128)
+  video_link       String           @default("") @db.VarChar(256)
+  flag_link        String           @default("") @db.VarChar(256)
+  description      String           @default("") @db.VarChar(256)
+  question         String           @default("") @db.VarChar(256)
+  answer           String           @default("") @db.VarChar(256)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  userTutorials    UserTutorials[]
+
+  @@map("TBL_TUTORIAL_CHAPTER_DATAS")
+}
+
+model UserTutorials {
+  users                Users                @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  user_id              String
+  tutorialChapterDatas TutorialChapterDatas @relation(fields: [chapter_id], references: [chapter_id], onDelete: Cascade)
+  chapter_id           String
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+
+  @@id([user_id, chapter_id])
+  @@map("TBL_USER_TUTORIALS")
+}
+
+model Events {
+  event_id          String   @id @default(uuid())
+  name              String   @default("") @db.VarChar(128)
+  evnet_description String   @default("") @db.VarChar(256)
+  badges            Badges   @relation(fields: [award_badge], references: [badge_id], onDelete: SetNull)
+  award_badge       String
+  flag_link         String   @default("") @db.VarChar(256)
+  description       String   @default("") @db.VarChar(256)
+  question          String   @default("") @db.VarChar(256)
+  answer            String   @default("") @db.VarChar(256)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("TBL_EVENTS")
+}
+
+model Levels {
+  level_id   String       @id @default(uuid())
+  name       String       @default("") @db.VarChar(16)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  userScores UserScores[]
+  challenges Challenges[]
+
+  @@map("TBL_LEVELS")
+}
+
+model Types {
+  types_id   String       @id @default(uuid())
+  name       String       @default("") @db.VarChar(16)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  userScores UserScores[]
+  challenges Challenges[]
+
+  @@map("TBL_TYPES")
+}
+
+model Categories {
+  categories_id String       @id @default(uuid())
+  name          String       @default("") @db.VarChar(16)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  userScores    UserScores[]
+  challenges Challenges[]
+
+  @@map("TBL_CATEGORIES")
+}
+
+model Challenges {
+  challenge_id         String                 @id @default(uuid())
+  name                 String                 @default("") @db.VarChar(128)
+  question             String                 @default("") @db.VarChar(256)
+  description          String                 @default("") @db.VarChar(256)
+  levels               Levels                 @relation(fields: [level_id], references: [level_id], onDelete: Cascade)
+  level_id             String
+  types                Types                  @relation(fields: [types_id], references: [types_id], onDelete: Cascade)
+  types_id             String
+  categories           Categories             @relation(fields: [categories_id], references: [categories_id], onDelete: Cascade)
+  categories_id        String
+  badges               Badges                 @relation(fields: [award_badge], references: [badge_id], onDelete: SetNull)
+  award_badge          String
+  scorce               Int                    @default(0)
+  max_time             Int                    @default(0)
+  max_cost             Int                    @default(0)
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  userScores           UserScores[]
+  multipleQuestions    MultipleQuestions[]
+  shortAnswerQuestions ShortAnswerQuestions[]
+  flagQuestions        FlagQuestions[]
+
+  @@map("TBL_CHALLENGES")
+}
+
+model UserScores {
+  users         Users      @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  user_id       String
+  challenges    Challenges @relation(fields: [challenge_id], references: [challenge_id], onDelete: Cascade)
+  challenge_id  String
+  base_score    Int        @default(0)
+  time_score    Float      @default(0)
+  levels        Levels     @relation(fields: [level_id], references: [level_id], onDelete: Cascade)
+  level_id      String
+  types         Types      @relation(fields: [types_id], references: [types_id], onDelete: Cascade)
+  types_id      String
+  categories    Categories @relation(fields: [categories_id], references: [categories_id], onDelete: Cascade)
+  categories_id String
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@id([user_id, challenge_id])
+  @@map("TBL_USER_SCORES")
+}
+
+model MultipleQuestions {
+  multiple_question_id   String                   @id @default(uuid())
+  challenges             Challenges               @relation(fields: [challenge_id], references: [challenge_id], onDelete: Cascade)
+  challenge_id           String
+  question               String                   @default("") @db.VarChar(256)
+  hint                   String                   @default("") @db.VarChar(256)
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+  multipleChoiceQuestion MultipleChoiceQuestion[]
+
+  @@map("TBL_MULTIPLE_QUESTIONS")
+}
+
+model MultipleChoiceQuestion {
+  multiple_choice_question_id String            @id @default(uuid())
+  multipleQuestions           MultipleQuestions @relation(fields: [multiple_question_id], references: [multiple_question_id], onDelete: Cascade)
+  multiple_question_id        String
+  answer                      String            @default("") @db.VarChar(256)
+  correct_flag                Boolean           @default(false)
+  createdAt                   DateTime          @default(now())
+  updatedAt                   DateTime          @updatedAt
+
+  @@map("TBL_MULTIPLE_CHOICE_QUESTIONS")
+}
+
+model ShortAnswerQuestions {
+  short_answer_question_id String     @id @default(uuid())
+  challenges               Challenges @relation(fields: [challenge_id], references: [challenge_id], onDelete: Cascade)
+  challenge_id             String
+  question                 String     @default("") @db.VarChar(256)
+  hint                     String     @default("") @db.VarChar(256)
+  answer                   String     @default("") @db.VarChar(256)
+  createdAt                DateTime   @default(now())
+  updatedAt                DateTime   @updatedAt
+
+  @@map("TBL_SHORT_ANSWER_QUESTIONS")
+}
+
+model FlagQuestions {
+  flag_question_id String     @id @default(uuid())
+  challenges       Challenges @relation(fields: [challenge_id], references: [challenge_id], onDelete: Cascade)
+  challenge_id     String
+  video_link       String     @default("") @db.VarChar(256)
+  description      String     @default("") @db.VarChar(256)
+  question         String     @default("") @db.VarChar(256)
+  answer           String     @default("") @db.VarChar(256)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  @@map("TBL_FLAG_QUESTIONS")
+}

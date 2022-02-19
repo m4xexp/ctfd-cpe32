@@ -1,0 +1,34 @@
+version: '3.8'
+networks:
+  cpe_ctfd_dev_net:
+    driver: bridge
+
+services:
+  ## Persistence layer
+  # Database
+  database:
+    extends:
+      file: database/docker-compose.yaml
+      service: database
+    restart: always
+
+  # Database - Access tools
+  dbtools:
+    extends:
+      file: database/docker-compose.yaml
+      service: pgadmin
+    restart: always
+
+  # Stroage
+  storage:
+    extends:
+      file: storage/docker-compose.yaml
+      service: minio
+    restart: always
+
+  storagecreatebucket:
+    extends:
+      file: storage/docker-compose.yaml
+      service: createbuckets
+    depends_on:
+      - storage

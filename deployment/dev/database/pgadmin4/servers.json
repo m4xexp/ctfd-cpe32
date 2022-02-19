@@ -1,0 +1,20 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "OM Server",
+            "Group": "Servers",
+            "Host": "database.dia-om-dev.com",
+            "Port": 5432,
+            "MaintenanceDB": "db_om",
+            "Username": "diaomadmin",
+            "SSLMode": "prefer",
+            "SSLCert": "<STORAGE_DIR>/.postgresql/postgresql.crt",
+            "SSLKey": "<STORAGE_DIR>/.postgresql/postgresql.key",
+            "SSLCompression": 0,
+            "Timeout": 10,
+            "UseSSHTunnel": 0,
+            "TunnelPort": "22",
+            "TunnelAuthentication": 0
+        }
+    }
+}

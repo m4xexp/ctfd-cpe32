@@ -1,0 +1,38 @@
+version: '3.8'
+networks:
+  cpe_ctfd_dev_net:
+    driver: bridge
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: storage.$DOMAIN
+    command: minio server /mnt/dataset --console-address ":9001" --certs-dir /cert
+    environment:
+      # timezone must be synchronized
+      TZ: Asia/Bangkok
+      MINIO_ROOT_USER: $STORAGE_USERNAME
+      MINIO_ROOT_PASSWORD: $STORAGE_PASSWORD
+    volumes:
+      - ~/om-persitance/minio/data:/mnt/data/:rw
+    ports:
+    - 9000:9000
+    - 9001:9001
+    networks:
+      - cpe_ctfd_dev_net
+
+  createbuckets:
+    container_name: storage.createbuckets.$DOMAIN
+    image: minio/mc
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc config host add diaomstroage http://storage.$DOMAIN:9000 ${STORAGE_USERNAME} ${STORAGE_PASSWORD}) do echo '...waiting...' && sleep 1; done;
+      /usr/bin/mc mb diaomstroage/${BUCKET_BACKUP_NAME};
+      /usr/bin/mc policy set public diaomstroage/${BUCKET_BACKUP_NAME};
+
+      /usr/bin/mc mb diaomstroage/${BUCKET_IMAGE_NAME};
+      /usr/bin/mc policy set public diaomstroage/${BUCKET_IMAGE_NAME};
+      exit 0;
+      "
+    networks:
+      - cpe_ctfd_dev_net
