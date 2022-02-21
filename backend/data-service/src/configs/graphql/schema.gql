@@ -314,6 +314,7 @@ type Users {
 type Query {
   getUsers(where: UsersWhereInput, orderBy: [UsersOrderByWithRelationInput!], cursor: UsersWhereUniqueInput, take: Int, skip: Int, distinct: [UsersScalarFieldEnum!]): [Users!]
   getUserLoggings(where: UserLoggingsWhereInput, orderBy: [UserLoggingsOrderByWithRelationInput!], cursor: UserLoggingsWhereUniqueInput, take: Int, skip: Int, distinct: [UserLoggingsScalarFieldEnum!]): [UserLoggings!]
+  getTeams(where: TeamsWhereInput, orderBy: [TeamsOrderByWithRelationInput!], cursor: TeamsWhereUniqueInput, take: Int, skip: Int, distinct: [TeamsScalarFieldEnum!]): [Teams!]
 }
 
 input UsersWhereInput {
@@ -977,6 +978,37 @@ enum UserLoggingsScalarFieldEnum {
   updatedAt
 }
 
+input TeamsOrderByWithRelationInput {
+  team_id: SortOrder
+  team_profile_pic: SortOrder
+  name: SortOrder
+  conuntry_code: SortOrder
+  banned: SortOrder
+  github_link: SortOrder
+  twitter_link: SortOrder
+  facebook_link: SortOrder
+  createdAt: SortOrder
+  updatedAt: SortOrder
+  teamMembers: TeamMembersOrderByRelationAggregateInput
+}
+
+input TeamsWhereUniqueInput {
+  team_id: String
+}
+
+enum TeamsScalarFieldEnum {
+  team_id
+  team_profile_pic
+  name
+  conuntry_code
+  banned
+  github_link
+  twitter_link
+  facebook_link
+  createdAt
+  updatedAt
+}
+
 type Mutation {
   createUser(data: UsersCreateInput!): Users
   updateUser(data: UsersUpdateInput!, where: UsersWhereUniqueInput!): Users
@@ -984,6 +1016,9 @@ type Mutation {
   createUserLoggings(data: UserLoggingsCreateInput!): UserLoggings
   updateUserLoggings(data: UserLoggingsUpdateInput!, where: UserLoggingsWhereUniqueInput!): UserLoggings
   deleteUserLoggings(where: UserLoggingsWhereUniqueInput!): UserLoggings
+  createTeams(data: TeamsCreateInput!): Teams
+  updateTeams(data: TeamsUpdateInput!, where: TeamsWhereUniqueInput!): Teams
+  deleteTeams(where: TeamsWhereUniqueInput!): Teams
 }
 
 input UsersCreateInput {
@@ -1248,10 +1283,6 @@ input TeamsCreateWithoutTeamMembersInput {
 input TeamsCreateOrConnectWithoutTeamMembersInput {
   where: TeamsWhereUniqueInput!
   create: TeamsCreateWithoutTeamMembersInput!
-}
-
-input TeamsWhereUniqueInput {
-  team_id: String
 }
 
 input TeamMembersCreateOrConnectWithoutUsersInput {
@@ -3678,4 +3709,176 @@ input UsersUpdateWithoutUserLoggingsInput {
   teamMembers: TeamMembersUpdateManyWithoutUsersInput
   userTutorials: UserTutorialsUpdateManyWithoutUsersInput
   userScores: UserScoresUpdateManyWithoutUsersInput
+}
+
+input TeamsCreateInput {
+  team_id: String
+  team_profile_pic: String
+  name: String!
+  conuntry_code: String
+  banned: Boolean
+  github_link: String
+  twitter_link: String
+  facebook_link: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  teamMembers: TeamMembersCreateNestedManyWithoutTeamsInput
+}
+
+input TeamMembersCreateNestedManyWithoutTeamsInput {
+  create: [TeamMembersCreateWithoutTeamsInput!]
+  connectOrCreate: [TeamMembersCreateOrConnectWithoutTeamsInput!]
+  createMany: TeamMembersCreateManyTeamsInputEnvelope
+  connect: [TeamMembersWhereUniqueInput!]
+}
+
+input TeamMembersCreateWithoutTeamsInput {
+  type: String
+  status: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+  users: UsersCreateNestedOneWithoutTeamMembersInput!
+}
+
+input UsersCreateNestedOneWithoutTeamMembersInput {
+  create: UsersCreateWithoutTeamMembersInput
+  connectOrCreate: UsersCreateOrConnectWithoutTeamMembersInput
+  connect: UsersWhereUniqueInput
+}
+
+input UsersCreateWithoutTeamMembersInput {
+  user_id: String
+  user_invite_id: Int
+  profile_pic: String
+  total_score: Float
+  type: String
+  name: String!
+  password: String!
+  email: String!
+  conuntry_code: String
+  banned: Boolean
+  verified: Boolean
+  quick_start_status: Boolean
+  profile_description: String
+  github_link: String
+  twitter_link: String
+  facebook_link: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  userLoggings: UserLoggingsCreateNestedManyWithoutUsersInput
+  userBadges: UserBadgesCreateNestedManyWithoutUsersInput
+  userTutorials: UserTutorialsCreateNestedManyWithoutUsersInput
+  userScores: UserScoresCreateNestedManyWithoutUsersInput
+}
+
+input UsersCreateOrConnectWithoutTeamMembersInput {
+  where: UsersWhereUniqueInput!
+  create: UsersCreateWithoutTeamMembersInput!
+}
+
+input TeamMembersCreateOrConnectWithoutTeamsInput {
+  where: TeamMembersWhereUniqueInput!
+  create: TeamMembersCreateWithoutTeamsInput!
+}
+
+input TeamMembersCreateManyTeamsInputEnvelope {
+  data: [TeamMembersCreateManyTeamsInput!]!
+  skipDuplicates: Boolean
+}
+
+input TeamMembersCreateManyTeamsInput {
+  user_id: String!
+  type: String
+  status: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input TeamsUpdateInput {
+  team_id: StringFieldUpdateOperationsInput
+  team_profile_pic: NullableStringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  conuntry_code: StringFieldUpdateOperationsInput
+  banned: BoolFieldUpdateOperationsInput
+  github_link: StringFieldUpdateOperationsInput
+  twitter_link: StringFieldUpdateOperationsInput
+  facebook_link: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  teamMembers: TeamMembersUpdateManyWithoutTeamsInput
+}
+
+input TeamMembersUpdateManyWithoutTeamsInput {
+  create: [TeamMembersCreateWithoutTeamsInput!]
+  connectOrCreate: [TeamMembersCreateOrConnectWithoutTeamsInput!]
+  upsert: [TeamMembersUpsertWithWhereUniqueWithoutTeamsInput!]
+  createMany: TeamMembersCreateManyTeamsInputEnvelope
+  set: [TeamMembersWhereUniqueInput!]
+  disconnect: [TeamMembersWhereUniqueInput!]
+  delete: [TeamMembersWhereUniqueInput!]
+  connect: [TeamMembersWhereUniqueInput!]
+  update: [TeamMembersUpdateWithWhereUniqueWithoutTeamsInput!]
+  updateMany: [TeamMembersUpdateManyWithWhereWithoutTeamsInput!]
+  deleteMany: [TeamMembersScalarWhereInput!]
+}
+
+input TeamMembersUpsertWithWhereUniqueWithoutTeamsInput {
+  where: TeamMembersWhereUniqueInput!
+  update: TeamMembersUpdateWithoutTeamsInput!
+  create: TeamMembersCreateWithoutTeamsInput!
+}
+
+input TeamMembersUpdateWithoutTeamsInput {
+  type: StringFieldUpdateOperationsInput
+  status: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  users: UsersUpdateOneRequiredWithoutTeamMembersInput
+}
+
+input UsersUpdateOneRequiredWithoutTeamMembersInput {
+  create: UsersCreateWithoutTeamMembersInput
+  connectOrCreate: UsersCreateOrConnectWithoutTeamMembersInput
+  upsert: UsersUpsertWithoutTeamMembersInput
+  connect: UsersWhereUniqueInput
+  update: UsersUpdateWithoutTeamMembersInput
+}
+
+input UsersUpsertWithoutTeamMembersInput {
+  update: UsersUpdateWithoutTeamMembersInput!
+  create: UsersCreateWithoutTeamMembersInput!
+}
+
+input UsersUpdateWithoutTeamMembersInput {
+  user_id: StringFieldUpdateOperationsInput
+  profile_pic: NullableStringFieldUpdateOperationsInput
+  total_score: FloatFieldUpdateOperationsInput
+  type: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  conuntry_code: StringFieldUpdateOperationsInput
+  banned: BoolFieldUpdateOperationsInput
+  verified: BoolFieldUpdateOperationsInput
+  quick_start_status: BoolFieldUpdateOperationsInput
+  profile_description: StringFieldUpdateOperationsInput
+  github_link: StringFieldUpdateOperationsInput
+  twitter_link: StringFieldUpdateOperationsInput
+  facebook_link: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  userLoggings: UserLoggingsUpdateManyWithoutUsersInput
+  userBadges: UserBadgesUpdateManyWithoutUsersInput
+  userTutorials: UserTutorialsUpdateManyWithoutUsersInput
+  userScores: UserScoresUpdateManyWithoutUsersInput
+}
+
+input TeamMembersUpdateWithWhereUniqueWithoutTeamsInput {
+  where: TeamMembersWhereUniqueInput!
+  data: TeamMembersUpdateWithoutTeamsInput!
+}
+
+input TeamMembersUpdateManyWithWhereWithoutTeamsInput {
+  where: TeamMembersScalarWhereInput!
+  data: TeamMembersUpdateManyMutationInput!
 }
