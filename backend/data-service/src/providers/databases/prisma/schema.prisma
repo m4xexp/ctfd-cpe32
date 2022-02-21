@@ -2,10 +2,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
-//generator nestgraphql {
-//  provider = "node node_modules/prisma-nestjs-graphql"
-//  output = "../../models"
-//}
+generator nestgraphql {
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output = "../../../models"
+}
 
 datasource db {
   provider = "postgresql"
@@ -20,7 +20,7 @@ model Users {
   type                String          @default("user") @db.VarChar(8)
   name                String          @db.VarChar(16)
   password            String          @db.VarChar(128)
-  email               String          @db.VarChar(64)
+  email               String          @unique @db.VarChar(64)
   conuntry_code       String          @default("TH") @db.VarChar(8)
   banned              Boolean         @default(false)
   verified            Boolean         @default(false)
