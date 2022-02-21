@@ -3,10 +3,10 @@ import { Args, Info, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { PrismaSelect } from '@paljs/plugins'
 import { GraphQLResolveInfo } from 'graphql'
 import { GqlAuthGuard } from 'src/commons/guards/gql-auth.guard'
-import * as UserModel from 'src/models/users/index'
+import * as UsersModel from 'src/models/users'
 import { UsersService } from 'src/services/users.service'
 
-@Resolver(() => UserModel.Users)
+@Resolver(() => UsersModel.Users)
 export class UsersResolver {
   private logger: Logger
   constructor(private usersService: UsersService) {
@@ -16,15 +16,15 @@ export class UsersResolver {
   /**
    * Get User records
    */
-  @Query(() => [UserModel.Users], {
+  @Query(() => [UsersModel.Users], {
     name: 'getUsers',
     nullable: true,
   })
   // @UseGuards(GqlAuthGuard)
   async getUsers(
-    @Args('') args: UserModel.FindManyUsersArgs,
+    @Args('') args: UsersModel.FindManyUsersArgs,
     @Info() info: GraphQLResolveInfo,
-  ): Promise<UserModel.Users[] | Error> {
+  ): Promise<UsersModel.Users[] | Error> {
     const select = new PrismaSelect(info).value
     const result = await this.usersService.get(args, select)
 
@@ -37,13 +37,13 @@ export class UsersResolver {
   /**
    * Create User record
    */
-  @Mutation(() => UserModel.Users, {
+  @Mutation(() => UsersModel.Users, {
     name: 'createUser',
     nullable: true,
   })
   async createUser(
-    @Args('') args: UserModel.CreateOneUsersArgs,
-  ): Promise<UserModel.Users | Error> {
+    @Args('') args: UsersModel.CreateOneUsersArgs,
+  ): Promise<UsersModel.Users | Error> {
     const result = await this.usersService.create(args)
 
     // Error
@@ -55,14 +55,14 @@ export class UsersResolver {
   /**
    * Update User record
    */
-  @Mutation(() => UserModel.Users, {
+  @Mutation(() => UsersModel.Users, {
     name: 'updateUser',
     nullable: true,
   })
   async updateUser(
-    @Args('') args: UserModel.UpdateOneUsersArgs,
+    @Args('') args: UsersModel.UpdateOneUsersArgs,
     @Info() info: GraphQLResolveInfo,
-  ): Promise<UserModel.Users | Error> {
+  ): Promise<UsersModel.Users | Error> {
     const select = new PrismaSelect(info).value
     const result = await this.usersService.update(args, select)
     // Error
@@ -74,14 +74,14 @@ export class UsersResolver {
   /**
    * Delete User record
    */
-  @Mutation(() => UserModel.Users, {
+  @Mutation(() => UsersModel.Users, {
     name: 'deleteUser',
     nullable: true,
   })
   // @UseGuards(GqlAuthGuard)
   async deleteUser(
-    @Args('') args: UserModel.DeleteOneUsersArgs,
-  ): Promise<UserModel.Users | Error> {
+    @Args('') args: UsersModel.DeleteOneUsersArgs,
+  ): Promise<UsersModel.Users | Error> {
     const result = await this.usersService.delete(args)
     // Error
     if (result instanceof Error) this.logger.error(`${result}`)

@@ -27,9 +27,6 @@ services:
     entrypoint: >
       /bin/sh -c "
       until (/usr/bin/mc config host add diaomstroage http://storage.$DOMAIN:9000 ${STORAGE_USERNAME} ${STORAGE_PASSWORD}) do echo '...waiting...' && sleep 1; done;
-      /usr/bin/mc mb diaomstroage/${BUCKET_BACKUP_NAME};
-      /usr/bin/mc policy set public diaomstroage/${BUCKET_BACKUP_NAME};
-
       /usr/bin/mc mb diaomstroage/${BUCKET_IMAGE_NAME};
       /usr/bin/mc policy set public diaomstroage/${BUCKET_IMAGE_NAME};
       exit 0;

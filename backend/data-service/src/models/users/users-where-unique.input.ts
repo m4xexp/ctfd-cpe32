@@ -9,4 +9,7 @@ export class UsersWhereUniqueInput {
 
   @Field(() => Int, { nullable: true })
   user_invite_id?: number
+
+  @Field(() => String, { nullable: true })
+  email?: string
 }

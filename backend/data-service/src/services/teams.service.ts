@@ -6,28 +6,21 @@ import {
   InternalServerErrorException,
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
-import * as UsersModel from 'src/models/users'
+import * as TeamModel from 'src/models/teams'
 import { PrismaService } from 'src/providers/databases/prisma/prisma.service'
-import { AuthService } from 'src/authentication/auth.service'
 
 @Injectable()
-export class UsersService {
-  constructor(
-    private prisma: PrismaService,
-    private authService: AuthService,
-  ) {}
+export class TeamsService {
+  constructor(private prisma: PrismaService) {}
 
-  async create(
-    data: UsersModel.CreateOneUsersArgs,
-  ): Promise<UsersModel.Users | Error> {
+  // Bug
+  async create(data: any): Promise<TeamModel.Teams | Error> {
     /**
-     * Create User record
+     * Create Team record
      */
     try {
-      // Enscript password
-      data.data.password = await this.authService.hash(data.data.password)
-      // Insert User record to database
-      return await this.prisma.users.create({ ...data })
+      // Insert Team record to database
+      return this.prisma.teams.create({ ...data })
     } catch (e) {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         // The .code property can be accessed in a type-safe manner
@@ -40,15 +33,15 @@ export class UsersService {
   }
 
   async get(
-    args: UsersModel.FindManyUsersArgs,
+    args: TeamModel.FindManyTeamsArgs,
     select: any,
-  ): Promise<UsersModel.Users[] | Error> {
+  ): Promise<TeamModel.Teams[] | Error> {
     /**
-     * Get User records
+     * Get Team records
      */
     try {
-      // Get User records from database
-      const result = await this.prisma.users.findMany({
+      // Get Team records from database
+      const result = await this.prisma.teams.findMany({
         ...args,
         ...select,
       })
@@ -63,19 +56,15 @@ export class UsersService {
   }
 
   async update(
-    args: UsersModel.UpdateOneUsersArgs,
+    args: TeamModel.UpdateOneTeamsArgs,
     select: any,
-  ): Promise<UsersModel.Users | Error> {
+  ): Promise<TeamModel.Teams | Error> {
     /**
-     * Update or create Users record
+     * Update or create Users logging record
      */
     try {
-      if (args.data.password)
-        args.data.password.set = await this.authService.hash(
-          args.data.password.set,
-        )
-      // Update User record
-      return await this.prisma.users.update({ ...args, ...select })
+      // Update Team record
+      return await this.prisma.teams.update({ ...args, ...select })
     } catch (e) {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         // The .code property can be accessed in a type-safe manner
@@ -87,14 +76,14 @@ export class UsersService {
   }
 
   async delete(
-    args: UsersModel.DeleteOneUsersArgs,
-  ): Promise<UsersModel.Users | Error> {
+    args: TeamModel.DeleteOneTeamsArgs,
+  ): Promise<TeamModel.Teams | Error> {
     /**
      * Delete Users record
      */
     try {
       // Delete User record
-      return await this.prisma.users.delete({ ...args })
+      return await this.prisma.teams.delete({ ...args })
     } catch (e) {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
         // The .code property can be accessed in a type-safe manner

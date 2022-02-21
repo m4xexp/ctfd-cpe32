@@ -8,10 +8,9 @@
 1. go to **ROOT_PROJECT** path
 
 2. create **.env** file and put into folder **dev** or **prod**. It's depend on what are you doing right now
-3. 
-4. build docker image by using
 
 **for dev**
+
 ```
 sudo docker-compose -f deployment/dev/docker-compose.build.yaml build
 ```
@@ -21,7 +20,17 @@ sudo docker-compose -f deployment/dev/docker-compose.build.yaml build
 sudo docker-compose -f deployment/prod/docker-compose.build.yaml build
 ```
 
-5. for start service run this script
+## 🎊 Starting service
+
+1 Go to `deployment`
+```
+cd deployment
+```
+
+2 Export variable to environment **Remark run this script for dev outside docker only**
+```
+source setup_env_dev.sh
+```
 
 **for dev**
 ```
