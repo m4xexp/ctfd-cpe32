@@ -1,11 +1,10 @@
-import FeaturesSection from "Pages/Home/components/FeaturesSection";
-import WelcomeSection from "Pages/Home/components/WelcomeSection";
+import { FeaturesSection, WelcomeSection } from "Pages/Home/components";
 
 function Home() {
   return (
     <>
-      <FeaturesSection />
       <WelcomeSection />
+      <FeaturesSection />
     </>
   );
 }

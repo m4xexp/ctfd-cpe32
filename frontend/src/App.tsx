@@ -8,6 +8,7 @@ import Leaderboard from "Pages/Leaderboard";
 import Navbar from "components/Navbar/Navbar";
 import { SignupPage } from "Pages/Signup";
 import { SigninPage } from "Pages/Signin";
+import { TutorialPage } from "Pages/Tutorial";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/leaderboard" element={<Leaderboard />}></Route>
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/signin" element={<SigninPage />}></Route>
+        <Route path="/tutorial" element={<TutorialPage />}></Route>
       </Routes>
 
       {/* <Footer /> */}

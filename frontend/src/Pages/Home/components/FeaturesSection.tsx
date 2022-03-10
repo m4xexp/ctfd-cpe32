@@ -1,45 +1,61 @@
-import { DotLeft, DotRight } from "components/Dot";
+import FeatureCard from "components/Cards/FeatureCard";
 
 type Props = {};
 
 function FeaturesSection({}: Props) {
   return (
-    <div
-      style={{ minHeight: "calc(100vh - (80px))" }}
-      className="flex flex-col justify-center items-center min-h-screen gap-4"
-    >
-      <div className="relative p-8">
-        <DotLeft />
-        <h1 className="text-white text-6xl font-bold uppercase">
-          We are what we learn
-        </h1>
-        <h1 className="text-white text-6xl font-bold uppercase text-center">
-          cpe 32
-        </h1>
-        <DotRight />
-      </div>
-
-      <div className="w-1/2">
-        <h6 className="text-white text-center font-light">
-          We will make the Capture The Flag website that suitable for beginners
-          with more challenge, tutorial and hint. In addition, our website is
-          suitable for professionals as well.
+    <>
+      <div className="flex flex-col justify-start items-center h-screen gap-4">
+        <div className="mt-20 flex gap-8 relative w-full justify-center">
+          <div className="absolute left-0 top-1/2 border-b-2 border-white w-[37.75vw]"></div>
+          <h1 className="text-white text-6xl font-bold">Features</h1>
+          <div className="absolute right-0 top-1/2 border-b-2 border-white w-[37.75vw]"></div>
+        </div>
+        <h6 className="text-white text-center font-light mt-4">
+          From easy to the most difficult, our virtual hacking labs cover all
+          skill levels. New content is added every week, covering the latest
+          exploits and vulnerabilities.
         </h6>
-      </div>
 
-      <div className="mt-8">
-        <button className="py-3 px-4 bg-[#0062B9] text-white text-3xl font-semibold shadow-md rounded-xl">
-          <h3
-            className=""
-            style={{
-              textShadow: "rgba(255, 99, 71, 0)",
-            }}
-          >
-            Join Now
-          </h3>
-        </button>
+        <div className="flex gap-10 mt-12">
+          <FeatureCard
+            urlPath="/tutorial"
+            title="Tutorial"
+            description="Click here to start tutorial. You can learn the basic of
+            security from this feature."
+            imgUrl="https://images.unsplash.com/photo-1528109966604-5a6a4a964e8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+          />
+          <FeatureCard
+            urlPath="/challenge"
+            title="Challenge"
+            description="Click here to start tutorial. You can learn the basic of
+          security from this feature."
+            imgUrl="https://images.unsplash.com/photo-1507034589631-9433cc6bc453?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=384&q=80"
+          />
+          <FeatureCard
+            urlPath="/leaderboard"
+            title="Leaderboard"
+            description="Click here to start tutorial. You can learn the basic of
+          security from this feature."
+            imgUrl=" https://images.unsplash.com/photo-1601283220664-300f46e9e85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          />
+          <FeatureCard
+            urlPath="/event-mode"
+            title="Event Mode"
+            description="Click here to start tutorial. You can learn the basic of
+          security from this feature."
+            imgUrl="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          />
+          <FeatureCard
+            urlPath="/badge"
+            title="Badge"
+            description="Click here to start tutorial. You can learn the basic of
+          security from this feature."
+            imgUrl="https://images.unsplash.com/photo-1517602302552-471fe67acf66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
