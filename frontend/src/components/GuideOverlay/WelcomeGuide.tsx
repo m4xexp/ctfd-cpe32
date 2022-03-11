@@ -3,21 +3,21 @@ type Props = {};
 function WelcomeGuide({}: Props) {
   return (
     <>
-      <div className="fixed bg-primary bg-opacity-70 w-full h-full z-30">
-        <div className="flex flex-col justify-center items-center h-full">
-          <h6 className="text-white font-medium text-2xl">
+      <div className="fixed z-30 h-full w-full bg-primary bg-opacity-70">
+        <div className="flex h-full flex-col items-center justify-center">
+          <h6 className="text-2xl font-medium text-white">
             Welcome to the CPE32 Playground
           </h6>
-          <h6 className="text-white font-medium text-2xl">
+          <h6 className="text-2xl font-medium text-white">
             let’s we show you what we can do for you.
           </h6>
 
-          <div className="w-full flex justify-center gap-2 mt-4">
-            <button className="py-3 px-4 w-20 bg-secondary text-white text-3xl font-semibold shadow-md rounded-xl">
-              <h3 className="text-white font-light text-sm">Next</h3>
+          <div className="mt-4 flex w-full justify-center gap-2">
+            <button className="w-20 rounded-xl bg-secondary py-3 px-4 text-3xl font-semibold text-white shadow-md">
+              <h3 className="text-sm font-light text-white">Next</h3>
             </button>
-            <button className="py-3 px-4 w-20 bg-secondary text-white text-3xl font-semibold shadow-md rounded-xl">
-              <h3 className="text-white font-light text-sm">Skip</h3>
+            <button className="w-20 rounded-xl bg-secondary py-3 px-4 text-3xl font-semibold text-white shadow-md">
+              <h3 className="text-sm font-light text-white">Skip</h3>
             </button>
           </div>
         </div>

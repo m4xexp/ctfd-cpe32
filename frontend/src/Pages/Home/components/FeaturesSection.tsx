@@ -5,19 +5,19 @@ type Props = {};
 function FeaturesSection({}: Props) {
   return (
     <>
-      <div className="flex flex-col justify-start items-center h-screen gap-4">
-        <div className="mt-20 flex gap-8 relative w-full justify-center">
-          <div className="absolute left-0 top-1/2 border-b-2 border-white w-[37.75vw]"></div>
-          <h1 className="text-white text-6xl font-bold">Features</h1>
-          <div className="absolute right-0 top-1/2 border-b-2 border-white w-[37.75vw]"></div>
+      <div className="flex h-screen flex-col items-center justify-start gap-4">
+        <div className="relative mt-20 flex w-full justify-center gap-8">
+          <div className="absolute left-0 top-1/2 w-[37.75vw] border-b-2 border-white"></div>
+          <h1 className="text-6xl font-bold text-white">Features</h1>
+          <div className="absolute right-0 top-1/2 w-[37.75vw] border-b-2 border-white"></div>
         </div>
-        <h6 className="text-white text-center font-light mt-4">
+        <h6 className="mt-4 text-center font-light text-white">
           From easy to the most difficult, our virtual hacking labs cover all
           skill levels. New content is added every week, covering the latest
           exploits and vulnerabilities.
         </h6>
 
-        <div className="flex gap-10 mt-12">
+        <div className="mt-12 flex gap-10">
           <FeatureCard
             urlPath="/tutorial"
             title="Tutorial"

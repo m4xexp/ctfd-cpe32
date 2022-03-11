@@ -1,15 +1,14 @@
-import React from 'react';
-import Logo from 'assets/logo.svg'
+import React from "react";
+import Logo from "assets/logo.svg";
 
-export interface ITestImageProps {
-}
+export interface ITestImageProps {}
 
 const TestImage = (props: ITestImageProps) => {
   return (
     <>
-        <img src={Logo} alt="TestImage" />
+      <img src={Logo} alt="TestImage" />
     </>
   );
-}
+};
 
-export default TestImage
+export default TestImage;

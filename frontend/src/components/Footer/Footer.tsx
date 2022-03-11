@@ -5,10 +5,10 @@ type Props = {};
 function Footer({}: Props) {
   return (
     <>
-      <div className="bg-[#0A0527] w-full h-52">
+      <div className="h-52 w-full bg-[#0A0527]">
         <div className="flex items-center gap-12 px-6 py-3">
-          <img src={logo} alt="ctfd-32" className="w-44 h-44" />
-          <h6 className="text-[#52AEFF] font-light">
+          <img src={logo} alt="ctfd-32" className="h-44 w-44" />
+          <h6 className="font-light text-[#52AEFF]">
             take your cybersecurity skills to the next level through the most
             captivating, gamified, hands-on training experience!
           </h6>

@@ -9,22 +9,21 @@ import Navbar from "components/Navbar/Navbar";
 import { SignupPage } from "Pages/Signup";
 import { SigninPage } from "Pages/Signin";
 import { TutorialPage } from "Pages/Tutorial";
+import { MainEvent } from "Pages/Home/components";
 
 const App = () => {
   return (
     <>
       {/* <NavBarAfterLogin /> */}
-
       <Navbar />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/leaderboard" element={<Leaderboard />}></Route>
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/signin" element={<SigninPage />}></Route>
         <Route path="/tutorial" element={<TutorialPage />}></Route>
+        <Route path="/main-event" element={<MainEvent />}></Route>
       </Routes>
-
       {/* <Footer /> */}
     </>
   );

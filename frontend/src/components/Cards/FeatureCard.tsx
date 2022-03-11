@@ -5,10 +5,14 @@ type Props = {
   title?: string;
   description?: string;
   urlPath?: string;
+  width?: string;
+  height?: string;
+  borderRadius?: string;
 };
 
 function FeatureCard(props: Props) {
-  const { imgUrl, title, description, urlPath } = props;
+  const { imgUrl, title, description, urlPath, width, height, borderRadius } =
+    props;
 
   return (
     <>
@@ -19,20 +23,21 @@ function FeatureCard(props: Props) {
           backgroundBlendMode: "multiply",
           backgroundImage: `url(${imgUrl})`,
         }}
-        className={`flex justify-center items-center rounded-2xl 
-                    shadow-md w-64 h-96 relative group `}
+        className={`group relative flex h-96 ${height} ${width} 
+                    w-64 items-center justify-center rounded-2xl ${borderRadius} shadow-md`}
       >
         <div
           style={{
             backdropFilter: "blur(3px)",
           }}
-          className="bg-[#0A0527]  w-full h-44 absolute bottom-0 rounded-2xl bg-opacity-0
-                     text-white p-7 group-hover:bg-opacity-35 first-line:flex flex-col gap-2 transition ease-in-out duration-300"
+          className={`absolute bottom-0 h-44 w-full flex-col gap-2 rounded-2xl 
+                     bg-[#0A0527] bg-opacity-0 p-7 text-white transition duration-300 
+                      ease-in-out first-line:flex group-hover:bg-opacity-35`}
         >
           <a href={urlPath}>
-            <h6 className="font-semibold text-xl">{title}</h6>
+            <h6 className="text-xl font-semibold">{title}</h6>
           </a>
-          <h6 className="font-light text-base">{description}</h6>
+          <h6 className="text-base font-light">{description}</h6>
         </div>
       </div>
     </>

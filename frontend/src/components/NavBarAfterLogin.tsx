@@ -4,38 +4,38 @@
 // }
 // export default NavBarAfterLogin
 
-import React, { Component } from "react";
- 
+import { Component } from "react";
+
 import Navbar from "reactjs-navbar";
 import logo from "../assets/ctf-logo.svg";
-import * as Loader from "react-loader-spinner";
+// import * as Loader from "react-loader-spinner";
 import {
   faUsers,
-  faBookOpen,
+  // faBookOpen,
   faGlobe,
   faChartPie,
   faCogs /*...*/,
   faAnchor,
   faDizzy,
-  faAdjust,
-  faBell,
-  faGhost,
-  faFan,
-  faCarSide,
-  faJedi,
-  faLaughBeam,
-  faKey,
-  faCheese,
+  // faAdjust,
+  // faBell,
+  // faGhost,
+  // faFan,
+  // faCarSide,
+  // faJedi,
+  // faLaughBeam,
+  // faKey,
+  // faCheese,
   faWater,
 } from "@fortawesome/free-solid-svg-icons";
- 
+
 import "./NavBar.css";
- 
+
 class App extends Component {
   state = {
     isLoading: false,
   };
- 
+
   render() {
     return (
       <Navbar
@@ -55,7 +55,7 @@ class App extends Component {
             onClick: () => {
               // What you want to do...
               //alert("Its coffee time...");
-              window.location.href='/leaderboard'
+              window.location.href = "/leaderboard";
             },
           },
           // {
@@ -94,7 +94,7 @@ class App extends Component {
                   alert("I need another cup of coffee...");
                 },
               },
-            ]
+            ],
           },
           {
             title: "Challenge",
@@ -148,7 +148,7 @@ class App extends Component {
                   alert("I need another cup of coffee...");
                 },
               },
-            ]
+            ],
           },
           {
             title: "Profile",
@@ -173,7 +173,7 @@ class App extends Component {
                   alert("I need another cup of coffee...");
                 },
               },
-            ]
+            ],
           },
         ]}
       />

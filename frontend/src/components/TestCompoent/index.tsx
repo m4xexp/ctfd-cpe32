@@ -1,5 +1,3 @@
-import TestImage from 'components/TestCompoent/TestImage'
+import TestImage from "components/TestCompoent/TestImage";
 
-export {
-    TestImage
-}
+export { TestImage };

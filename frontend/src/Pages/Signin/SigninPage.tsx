@@ -18,6 +18,9 @@ function SigninPage({}: Props) {
   );
 
   const handleNextStep = () => {
+    if (step === 2) {
+      window.location.href = "/";
+    }
     setStep((currentStep) => currentStep + 1);
   };
 
@@ -28,11 +31,16 @@ function SigninPage({}: Props) {
     setStep((currentStep) => currentStep - 1);
   };
 
+  const gotoStep = (step: number) => {
+    setStep(step);
+  };
+
   useEffect(() => {
     switch (step) {
       case 0:
         return setShowPage(
           <UsernameStep
+            gotoStep={gotoStep}
             formTitle={formTitles[step]}
             prevStep={handlePrevStep}
             nextStep={handleNextStep}
@@ -42,6 +50,7 @@ function SigninPage({}: Props) {
       case 1:
         return setShowPage(
           <PasswordStep
+            gotoStep={gotoStep}
             formTitle={formTitles[step]}
             prevStep={handlePrevStep}
             nextStep={handleNextStep}
@@ -51,6 +60,7 @@ function SigninPage({}: Props) {
       case 2:
         return setShowPage(
           <StaySignedInStep
+            gotoStep={gotoStep}
             formTitle={formTitles[step]}
             prevStep={handlePrevStep}
             nextStep={handleNextStep}
@@ -62,21 +72,19 @@ function SigninPage({}: Props) {
     }
 
     return () => {};
-  }, [step]);
+  }, [step, formTitles, handlePrevStep, handleNextStep]);
 
   return (
     <>
       <div
-        style={{ minHeight: "calc(100vh - (80px))" }}
-        className="flex justify-center items-center relative min-h-screen overflow-hidden bg-primary
-                    "
+        style={{ minHeight: "calc(100vh - (80px))"}}
+        className="relative flex min-h-screen items-center justify-center overflow-hidden bg-primary"
       >
         <CircleLeft />
         <CircleRight />
-
         <div className="relative p-8">
           <DotLeft className="bottom-0" />
-          <div className="flex flex-col gap-6 w-96 p-8 rounded-xl bg-secondary">
+          <div className="flex w-96 flex-col gap-6 rounded-xl bg-secondary p-8 ">
             {showPage}
           </div>
           <DotRight className="top-0" />

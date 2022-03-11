@@ -14,7 +14,7 @@ const Button: FC<ButtonProps> = (props) => {
     <>
       <button
         type={type}
-        className={`py-3 px-4 ${bgColor}text-white text-3xl font-semibold shadow-md rounded-xl`}
+        className={`py-3 px-4 ${bgColor}text-white rounded-xl text-3xl font-semibold shadow-md`}
       >
         <h3
           style={{

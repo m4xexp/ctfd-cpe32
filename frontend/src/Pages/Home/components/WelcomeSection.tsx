@@ -5,22 +5,22 @@ type Props = {};
 function WelcomeSection({}: Props) {
   return (
     <div
-      style={{ minHeight: "calc(100vh - (80px))" }}
-      className="flex flex-col justify-center items-center min-h-screen gap-4"
+      style={{ minHeight: "calc(100vh - 80px)" }}
+      className="flex min-h-screen flex-col items-center justify-center gap-4"
     >
       <div className="relative p-8">
         <DotLeft />
-        <h1 className="text-white text-6xl font-bold uppercase">
+        <h1 className="text-6xl font-bold uppercase text-white">
           We are what we learn
         </h1>
-        <h1 className="text-white text-6xl font-bold uppercase text-center">
+        <h1 className="text-center text-6xl font-bold uppercase text-white">
           cpe 32
         </h1>
         <DotRight />
       </div>
 
       <div className="w-1/2">
-        <h6 className="text-white text-center font-light">
+        <h6 className="text-center font-light text-white">
           We will make the Capture The Flag website that suitable for beginners
           with more challenge, tutorial and hint. In addition, our website is
           suitable for professionals as well.
@@ -28,7 +28,7 @@ function WelcomeSection({}: Props) {
       </div>
 
       <div className="mt-8">
-        <button className="py-3 px-4 bg-themeBlue text-white text-3xl font-semibold shadow-md rounded-xl">
+        <button className="rounded-xl bg-themeBlue py-3 px-4 text-3xl font-semibold text-white shadow-md">
           <h3
             className=""
             style={{
