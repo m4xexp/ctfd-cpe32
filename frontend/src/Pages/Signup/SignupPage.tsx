@@ -69,6 +69,30 @@ function SignupPage(props: Props) {
                 />
               </div>
             </div>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="username" className="text-sm text-white">
+                Confirm Password
+              </label>
+              <div className="relative block ">
+                <button
+                  className="absolute right-4 top-3"
+                  onClick={() => setToggleHidePassword(!toggleHidsPassword)}
+                >
+                  {toggleHidsPassword ? (
+                    <EyeOffIcon className="h-6 w-6 text-gray-400" />
+                  ) : (
+                    <EyeIcon className="h-6 w-6 text-gray-400" />
+                  )}
+                </button>
+
+                <input
+                  id="username"
+                  type={toggleHidsPassword ? "password" : "text"}
+                  placeholder="Username"
+                  className="h-12 w-full rounded-xl bg-primary px-4 py-2 text-white"
+                />
+              </div>
+            </div>
             <div className="mt-2 flex w-full items-center justify-between">
               <a href="/signin">
                 <h6 className="text-xs text-white text-opacity-50 hover:text-white">
